@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
     public void Siguiente(View view){
         Intent siguiente = new Intent(this,MainActivity2.class);
         startActivity(siguiente);
-
-
+        //finish();
     }
 }

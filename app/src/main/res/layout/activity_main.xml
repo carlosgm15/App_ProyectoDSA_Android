@@ -60,7 +60,7 @@
         android:layout_marginEnd="32dp"
         android:background="@drawable/button_rounded"
         android:text="LOGGIN"
-        android:onClick="btnLogin_Click"
+        android:onClick="onButtonRegistrarClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwodLogin" />
@@ -79,5 +79,12 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLoggin" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/my_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

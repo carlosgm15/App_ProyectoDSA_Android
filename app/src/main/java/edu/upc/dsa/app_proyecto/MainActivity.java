@@ -1,5 +1,6 @@
 package edu.upc.dsa.app_proyecto;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     public TextView editTextName, editTextPassword ;
     public String nameUser,passwordUser;
+    private static int REGISTRAR = 1;
 
 
     @Override
@@ -75,7 +77,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void Siguiente(View view) {
         Intent siguiente = new Intent(this, MainActivity2.class);
-        startActivity(siguiente);
+        siguiente.putExtra("nombre", "");
+        startActivityForResult(siguiente, REGISTRAR);
         //finish();
     }
 
@@ -107,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         usuariotmp.setUsername(nameUser);
         usuariotmp.setPassword(passwordUser);
         try {
-            Call<User> usersCall = userService.addUser(usuariotmp);
+            Call<User> usersCall = userService.logginUser(usuariotmp);
             /* Android Doesn't allow synchronous execution of Http Request and so we must put it in queue*/
             usersCall.enqueue(new Callback<User>() {
 
@@ -123,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                     /*    mAdapter = new MyAdapter(objetosList);
                         recyclerView.setAdapter(mAdapter);*/
                         //buildRecyclerView();
-                        //Lanzar una nueva actividad con otra pantalla
+                        //!!!!!!!!!!!!Lanzar una nueva actividad con otra pantalla
                     }
                     if (response.code() == 409) {NotifyUser("User Duplicado , Inserta de nuevo");}
                 }
@@ -159,4 +162,61 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }*/
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                nameUser =  data.getStringExtra("unsername");
+                passwordUser = data.getStringExtra("password");
+                User usuariotmp = new User();
+                usuariotmp.setUsername(nameUser);
+                usuariotmp.setPassword(passwordUser);
+                postAddUser(usuariotmp);
+
+            }
+
+        }
+    }
+
+
+    public void postAddUser (User usuariotmp){
+
+        try {
+            Call<User> usersCall = userService.addUser(usuariotmp);
+            /* Android Doesn't allow synchronous execution of Http Request and so we must put it in queue*/
+            usersCall.enqueue(new Callback<User>() {
+
+                @Override
+                public void onResponse(Call<User> call, Response<User> response) {
+                    if (response.code() == 201) {
+                        NotifyUser("Successful");
+                        MainActivity.this.usuario = response.body();
+                        NotifyUser("Usuario" +usuario);
+                        objetosList = usuario.objetosList;
+                        NotifyUser("objetos" + objetosList);
+                        Log.d("MYAPP", "La lista de objetos es"+objetosList);
+                    /*    mAdapter = new MyAdapter(objetosList);
+                        recyclerView.setAdapter(mAdapter);*/
+                        //buildRecyclerView();
+                        //Lanzar una nueva actividad con otra pantalla
+                    }
+                    if (response.code() == 409) {NotifyUser("User Duplicado , Inserta de nuevo");}
+                }
+
+                @Override
+                public void onFailure(Call<User> call, Throwable t) {
+                    NotifyUser("Error Server");
+                }
+
+            });
+        } catch (Exception e) {
+            NotifyUser("Exception: " + e.toString());
+        }
+    }
+
+
+
 }

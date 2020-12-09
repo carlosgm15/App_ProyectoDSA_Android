@@ -9,5 +9,7 @@ public interface UserService {
 
     @POST("usuario/adduser/")
     Call<User> addUser(@Body User u);
+    @POST("usuario/logginuser/")
+    Call<User> logginUser(@Body User u);
 
 }

@@ -51,6 +51,10 @@ public class MainActivity2 extends AppCompatActivity {
             Toast.makeText(MainActivity2.this,"No has introducido valores",Toast.LENGTH_LONG).show();
         else if (usuario.contentEquals("jose"))
             Toast.makeText(MainActivity2.this,"Este usuario ya existe",Toast.LENGTH_LONG).show();
-
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra("unsername", usuario);
+        resultIntent.putExtra("password",password);
+        setResult(RESULT_OK,resultIntent);
+        finish();
     }
 }

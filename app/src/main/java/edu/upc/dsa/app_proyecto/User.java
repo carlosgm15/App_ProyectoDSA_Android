@@ -44,6 +44,10 @@ public class User {
         this.username = username;
     }
 
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
     public String getPassword() {
         return password;
     }

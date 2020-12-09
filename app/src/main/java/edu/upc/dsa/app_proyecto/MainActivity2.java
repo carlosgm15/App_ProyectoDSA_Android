@@ -4,10 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity2 extends AppCompatActivity {
 
@@ -46,8 +51,6 @@ public class MainActivity2 extends AppCompatActivity {
             Toast.makeText(MainActivity2.this,"No has introducido valores",Toast.LENGTH_LONG).show();
         else if (usuario.contentEquals("jose"))
             Toast.makeText(MainActivity2.this,"Este usuario ya existe",Toast.LENGTH_LONG).show();
-
-
 
     }
 }

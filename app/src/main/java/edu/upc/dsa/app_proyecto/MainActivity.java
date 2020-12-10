@@ -107,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
         nameUser = editTextName.getText().toString();
         passwordUser = editTextPassword.getText().toString();
         User usuariotmp = new User();
+        //
         usuariotmp.setUsername(nameUser);
         usuariotmp.setPassword(passwordUser);
         try {

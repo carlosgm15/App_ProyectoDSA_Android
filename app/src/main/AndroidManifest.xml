@@ -25,6 +25,9 @@
             android:theme="@style/ThemeAjustes"/>
         <activity android:name=".Activity_Play"
             android:theme="@style/ThemePlay"/>
+        <activity android:name=".Dashboard">
+
+        </activity>
         <activity android:name=".MainActivity2" />
         <activity android:name=".MainActivity">
             <intent-filter>

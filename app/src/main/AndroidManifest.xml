@@ -13,21 +13,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity_Sonido"
-            android:theme="@style/ThemeSonido"/>
-        <activity android:name=".Activity_Friend"
-            android:theme="@style/ThemeFriends"/>
-        <activity android:name=".Activity_Score"
-            android:theme="@style/ThemeScore"/>
-        <activity android:name=".Activity_Idioma"
-            android:theme="@style/ThemeIdioma"/>
-        <activity android:name=".Activity_Ajustes"
-            android:theme="@style/ThemeAjustes"/>
-        <activity android:name=".Activity_Play"
-            android:theme="@style/ThemePlay"/>
-        <activity android:name=".Dashboard">
-
-        </activity>
+        <activity android:name=".Splash"></activity>
+        <activity
+            android:name=".Activity_Sonido"
+            android:theme="@style/ThemeSonido" />
+        <activity
+            android:name=".Activity_Friend"
+            android:theme="@style/ThemeFriends" />
+        <activity
+            android:name=".Activity_Score"
+            android:theme="@style/ThemeScore" />
+        <activity
+            android:name=".Activity_Idioma"
+            android:theme="@style/ThemeIdioma" />
+        <activity
+            android:name=".Activity_Ajustes"
+            android:theme="@style/ThemeAjustes" />
+        <activity
+            android:name=".Activity_Play"
+            android:theme="@style/ThemePlay" />
+        <activity android:name=".Dashboard"></activity>
         <activity android:name=".MainActivity2" />
         <activity android:name=".MainActivity">
             <intent-filter>

@@ -15,6 +15,7 @@
         android:layout_marginTop="1200dp"
         android:layout_marginEnd="162dp"
         android:layout_marginBottom="128dp"
+        android:clickable="true"
         android:background="@color/purple_200"
         android:text="DASHBOARD"
         app:layout_constraintBottom_toTopOf="@+id/my_recycler_view"

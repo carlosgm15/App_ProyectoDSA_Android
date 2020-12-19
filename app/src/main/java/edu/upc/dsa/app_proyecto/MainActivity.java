@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -44,13 +46,15 @@ public class MainActivity extends AppCompatActivity {
     public TextView editTextName, editTextPassword ;
     public String nameUser,passwordUser;
     private static int REGISTRAR = 1;
+    private EditText name, pass;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        pass = (EditText) findViewById(R.id.passwodLogin);
+        name = (EditText) findViewById(R.id.usernameLogin);
         btn = (Button) findViewById(R.id.btnDash);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,8 +185,9 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
-                nameUser =  data.getStringExtra("unsername");
+                nameUser =  data.getStringExtra("username");
                 passwordUser = data.getStringExtra("password");
+                SaveLoginSharedPreference(nameUser,passwordUser);
                 User usuariotmp = new User();
                 usuariotmp.setUsername(nameUser);
                 usuariotmp.setPassword(passwordUser);
@@ -193,6 +198,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void SaveLoginSharedPreference(String nameUser, String passwordUser) {
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("nameUser", nameUser);
+        editor.putString("passwordUser", passwordUser);
+        editor.apply();
+    }
 
     public void postAddUser (User usuariotmp){
 

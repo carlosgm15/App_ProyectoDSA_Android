@@ -6,30 +6,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#202732"
+    android:orientation="vertical"
     tools:context=".Dashboard">
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:background="@color/amarillo"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/amarillo">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:background="@color/amarillo"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
                 android:layout_weight="1"
-                android:layout_height="match_parent">
+                android:background="@color/amarillo">
 
                 <RelativeLayout
                     android:id="@+id/rellay_play"
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="0.65"
-                    android:clickable="true"
-                    android:foreground="?attr/selectableItemBackground"
                     android:background="@color/verde"
-                    android:layout_height="match_parent">
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -40,30 +51,31 @@
                             android:id="@+id/imgView3"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:src="@drawable/play"
+                            android:layout_centerHorizontal="true"
                             android:adjustViewBounds="true"
-                            android:scaleType="centerInside"
                             android:padding="8dp"
-                            android:layout_centerHorizontal="true"/>
+                            android:scaleType="centerInside"
+                            android:src="@drawable/play" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Play"
                             android:layout_below="@+id/imgView3"
                             android:layout_centerHorizontal="true"
+                            android:text="Play"
                             android:textColor="@color/black"
-                            android:textSize="14dp">
-                        </TextView>
+                            android:textSize="14dp"></TextView>
                     </RelativeLayout>
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:id="@+id/rellay_friend"
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="0.65"
-                    android:clickable="true"
-                    android:foreground="?attr/selectableItemBackground"
                     android:background="@color/gris"
-                    android:layout_height="match_parent">
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -74,38 +86,43 @@
                             android:id="@+id/imgView4"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:src="@drawable/friend"
+                            android:layout_centerHorizontal="true"
                             android:adjustViewBounds="true"
-                            android:scaleType="centerInside"
                             android:padding="8dp"
-                            android:layout_centerHorizontal="true"/>
+                            android:scaleType="centerInside"
+                            android:src="@drawable/friend" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Amigos"
                             android:layout_below="@+id/imgView4"
                             android:layout_centerHorizontal="true"
+                            android:text="Amigos"
                             android:textColor="@color/black"
-                            android:textSize="14dp">
-                        </TextView>
+                            android:textSize="14dp"></TextView>
                     </RelativeLayout>
                 </RelativeLayout>
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:background="@color/amarillo"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_height="match_parent">
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/amarillo">
 
                 <RelativeLayout
                     android:id="@+id/rellay_idioma"
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="0.65"
-                    android:clickable="true"
-                    android:foreground="?attr/selectableItemBackground"
                     android:background="@color/rosa"
-                    android:layout_height="match_parent">
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -116,30 +133,31 @@
                             android:id="@+id/imgView5"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:src="@drawable/idioma"
+                            android:layout_centerHorizontal="true"
                             android:adjustViewBounds="true"
-                            android:scaleType="centerInside"
                             android:padding="8dp"
-                            android:layout_centerHorizontal="true"/>
+                            android:scaleType="centerInside"
+                            android:src="@drawable/idioma" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Idioma"
                             android:layout_below="@+id/imgView5"
                             android:layout_centerHorizontal="true"
+                            android:text="Idioma"
                             android:textColor="@color/black"
-                            android:textSize="14dp">
-                        </TextView>
+                            android:textSize="14dp"></TextView>
                     </RelativeLayout>
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:id="@+id/rellay_score"
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="0.65"
-                    android:clickable="true"
-                    android:foreground="?attr/selectableItemBackground"
                     android:background="@color/purple_200"
-                    android:layout_height="match_parent">
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -150,38 +168,43 @@
                             android:id="@+id/imgView6"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:src="@drawable/score"
+                            android:layout_centerHorizontal="true"
                             android:adjustViewBounds="true"
-                            android:scaleType="centerInside"
                             android:padding="8dp"
-                            android:layout_centerHorizontal="true"/>
+                            android:scaleType="centerInside"
+                            android:src="@drawable/score" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Score"
                             android:layout_below="@+id/imgView6"
                             android:layout_centerHorizontal="true"
+                            android:text="Score"
                             android:textColor="@color/black"
-                            android:textSize="14dp">
-                        </TextView>
+                            android:textSize="14dp"></TextView>
                     </RelativeLayout>
                 </RelativeLayout>
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:background="@color/amarillo"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_height="match_parent">
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/amarillo">
 
                 <RelativeLayout
                     android:id="@+id/rellay_ajustes"
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="0.65"
-                    android:clickable="true"
-                    android:foreground="?attr/selectableItemBackground"
                     android:background="@color/celeste"
-                    android:layout_height="match_parent">
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -192,30 +215,31 @@
                             android:id="@+id/imgView1"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:src="@drawable/ajustes"
+                            android:layout_centerHorizontal="true"
                             android:adjustViewBounds="true"
-                            android:scaleType="centerInside"
                             android:padding="8dp"
-                            android:layout_centerHorizontal="true"/>
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ajustes" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Ajustes"
                             android:layout_below="@+id/imgView1"
                             android:layout_centerHorizontal="true"
+                            android:text="Ajustes"
                             android:textColor="@color/black"
-                            android:textSize="14dp">
-                        </TextView>
+                            android:textSize="14dp"></TextView>
                     </RelativeLayout>
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:id="@+id/rellay_sonido"
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="0.65"
-                    android:clickable="true"
-                    android:foreground="?attr/selectableItemBackground"
                     android:background="@color/amarillo3"
-                    android:layout_height="match_parent">
+                    android:clickable="true"
+                    android:foreground="?attr/selectableItemBackground">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -226,20 +250,20 @@
                             android:id="@+id/imgView2"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:src="@drawable/sonido2"
+                            android:layout_centerHorizontal="true"
                             android:adjustViewBounds="true"
-                            android:scaleType="centerInside"
                             android:padding="8dp"
-                            android:layout_centerHorizontal="true"/>
+                            android:scaleType="centerInside"
+                            android:src="@drawable/sonido2" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Sonido"
                             android:layout_below="@+id/imgView2"
                             android:layout_centerHorizontal="true"
+                            android:text="Sonido"
                             android:textColor="@color/black"
-                            android:textSize="14dp">
-                        </TextView>
+                            android:textSize="14dp"></TextView>
                     </RelativeLayout>
                 </RelativeLayout>
 

@@ -11,10 +11,21 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".MainActivity2"></activity>
-
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".Activity_Sonido"
+            android:theme="@style/ThemeSonido"/>
+        <activity android:name=".Activity_Friend"
+            android:theme="@style/ThemeFriends"/>
+        <activity android:name=".Activity_Score"
+            android:theme="@style/ThemeScore"/>
+        <activity android:name=".Activity_Idioma"
+            android:theme="@style/ThemeIdioma"/>
+        <activity android:name=".Activity_Ajustes"
+            android:theme="@style/ThemeAjustes"/>
+        <activity android:name=".Activity_Play"
+            android:theme="@style/ThemePlay"/>
+        <activity android:name=".MainActivity2" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -42,8 +42,8 @@ public class Splash extends AppCompatActivity {
                 @Override
                 public void run() {
                     //Open the Login Activity after 5 seconds
-                    Intent intent = new Intent(getApplicationContext(), Dashboard.class);
-                    startActivity(intent);
+                    Intent intent2 = new Intent(getApplicationContext(), Dashboard.class);
+                    startActivity(intent2);
                     finish();
                 }
             }, 5000);

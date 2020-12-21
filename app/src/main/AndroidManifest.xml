@@ -13,8 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
+        <activity android:name=".Activity_ScoreCoop"></activity>
+        <activity android:name=".Activity_ScoreInd" />
+        <activity android:name=".Activity_Sonido" />
+        <activity android:name=".Activity_Idioma" />
         <activity
-            android:name=".Activity_Sonido"
+            android:name=".Activity_Tienda"
             android:theme="@style/ThemeSonido" />
         <activity
             android:name=".Activity_Friend"
@@ -23,7 +27,7 @@
             android:name=".Activity_Score"
             android:theme="@style/ThemeScore" />
         <activity
-            android:name=".Activity_Idioma"
+            android:name=".Activity_Mapas"
             android:theme="@style/ThemeIdioma" />
         <activity
             android:name=".Activity_Ajustes"
@@ -31,11 +35,9 @@
         <activity
             android:name=".Activity_Play"
             android:theme="@style/ThemePlay" />
-        <activity android:name=".Dashboard"></activity>
+        <activity android:name=".Dashboard" />
         <activity android:name=".MainActivity2" />
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

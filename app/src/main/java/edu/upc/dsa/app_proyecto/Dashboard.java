@@ -4,28 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
 
 public class Dashboard extends AppCompatActivity {
 
-    RelativeLayout rellay_ajustes, rellay_friend, rellay_sonido, rellay_score,
-            rellay_play, rellay_idioma;
+    RelativeLayout rellay_ajustes, rellay_friend, rellay_tienda, rellay_score,
+            rellay_play, rellay_mapas;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dashboard);
 
         rellay_ajustes = findViewById(R.id.rellay_ajustes);
-        rellay_sonido = findViewById(R.id.rellay_sonido);
+        rellay_tienda = findViewById(R.id.rellay_tienda);
         rellay_friend = findViewById(R.id.rellay_friend);
         rellay_score = findViewById(R.id.rellay_score);
         rellay_play = findViewById(R.id.rellay_play);
-        rellay_idioma = findViewById(R.id.rellay_idioma);
+        rellay_mapas = findViewById(R.id.rellay_mapa);
 
         rellay_play.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,10 +38,10 @@ public class Dashboard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        rellay_sonido.setOnClickListener(new View.OnClickListener() {
+        rellay_tienda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Dashboard.this, Activity_Sonido.class);
+                Intent intent = new Intent(Dashboard.this, Activity_Tienda.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
             }
@@ -67,10 +62,10 @@ public class Dashboard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        rellay_idioma.setOnClickListener(new View.OnClickListener() {
+        rellay_mapas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Dashboard.this, Activity_Idioma.class);
+                Intent intent = new Intent(Dashboard.this, Activity_Mapas.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
             }

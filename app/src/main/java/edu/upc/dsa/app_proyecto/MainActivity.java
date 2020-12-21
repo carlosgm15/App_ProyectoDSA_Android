@@ -185,9 +185,9 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
-                nameUser =  data.getStringExtra("username");
-                passwordUser = data.getStringExtra("password");
-                SaveLoginSharedPreference(nameUser,passwordUser);
+                //nameUser =  data.getStringExtra("username");
+                //passwordUser = data.getStringExtra("password");
+                //SaveLoginSharedPreference(nameUser,passwordUser);
                 User usuariotmp = new User();
                 usuariotmp.setUsername(nameUser);
                 usuariotmp.setPassword(passwordUser);

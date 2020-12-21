@@ -10,8 +10,8 @@ import android.os.Handler;
 
 public class Splash extends AppCompatActivity {
 
-    String username = ReadSharedPreferenceUsername("nameUser");
-    String pass = ReadSharedPreferencePassword("passwordUser");
+    String username = null;
+    String pass = null;
     private String ReadSharedPreferenceUsername(String key){
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         return sharedPref.getString(key,"");
@@ -25,6 +25,9 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        this.username = ReadSharedPreferenceUsername("nameUser");
+        this.pass = ReadSharedPreferencePassword("passwordUser");
+
         final Handler h = new Handler();
         if(username==""||pass=="") {
             h.postDelayed(new Runnable() {
@@ -49,6 +52,5 @@ public class Splash extends AppCompatActivity {
             }, 5000);
 
         }
-
     }
 }

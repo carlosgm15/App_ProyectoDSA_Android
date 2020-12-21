@@ -12,11 +12,7 @@ public class Splash extends AppCompatActivity {
 
     String username = null;
     String pass = null;
-    private String ReadSharedPreferenceUsername(String key){
-        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-        return sharedPref.getString(key,"");
-    }
-    private String ReadSharedPreferencePassword(String key){
+    private String ReadSharedPreference(String key){
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         return sharedPref.getString(key,"");
     }
@@ -25,8 +21,8 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        this.username = ReadSharedPreferenceUsername("nameUser");
-        this.pass = ReadSharedPreferencePassword("passwordUser");
+        this.username = ReadSharedPreference("nameUser");
+        this.pass = ReadSharedPreference("passwordUser");
 
         final Handler h = new Handler();
         if(username==""||pass=="") {

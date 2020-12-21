@@ -13,13 +13,14 @@ RelativeLayout rellay_ind,rellay_coop;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
+
         rellay_ind = findViewById(R.id.rellay_ind);
         rellay_coop = findViewById(R.id.rellay_coop);
 
         rellay_ind.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Activity_Score.this, Activity_Play.class);
+                Intent intent = new Intent(Activity_Score.this, Activity_ScoreInd.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
             }
@@ -27,7 +28,7 @@ RelativeLayout rellay_ind,rellay_coop;
         rellay_coop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Dashboard.this, Activity_Ajustes.class);
+                Intent intent = new Intent(Activity_Score.this, Activity_ScoreCoop.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
             }

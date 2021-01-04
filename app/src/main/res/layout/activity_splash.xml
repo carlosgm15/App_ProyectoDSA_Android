@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".Splash">
 
+    <ProgressBar
+        android:id="@+id/indeterminateBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="195dp"
+        android:layout_marginTop="266dp"
+        android:layout_marginEnd="168dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/Cargando"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Cargando" />
+
     <ImageView
         android:id="@+id/Cargando"
         android:layout_width="605dp"
@@ -14,14 +27,13 @@
         android:layout_marginStart="95dp"
         android:layout_marginTop="274dp"
         android:layout_marginEnd="96dp"
-        android:layout_marginBottom="274dp"
         android:background="@drawable/splash"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.411" />
+        app:layout_constraintVertical_bias="0.393" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

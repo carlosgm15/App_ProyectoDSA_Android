@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText name, pass;
     public void showProgress (boolean visible){
         //Sets the visibility/invisibility of loginProgressBar
+        loginbar = findViewById(R.id.loginBar);
         if(visible)
             this.loginbar.setVisibility(View.VISIBLE);
         else

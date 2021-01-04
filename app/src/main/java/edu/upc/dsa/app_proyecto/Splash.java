@@ -15,13 +15,12 @@ public class Splash extends AppCompatActivity {
     String username = null;
     String pass = null;
     ProgressBar splashbar;
-    public void showProgress (boolean visible){
-        splashbar =findViewById(R.id.indeterminateBar);
+   /* public void showProgress (boolean visible){
         if(visible)
             this.splashbar.setVisibility(View.VISIBLE);
         else
             this.splashbar.setVisibility(View.GONE);
-    }
+    }*/
     private String ReadSharedPreference(String key){
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         return sharedPref.getString(key,"");
@@ -29,7 +28,8 @@ public class Splash extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        showProgress(true);
+        splashbar =findViewById(R.id.indeterminateBar);
+        splashbar.setVisibility(View.VISIBLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         this.username = ReadSharedPreference("nameUser");
@@ -41,7 +41,7 @@ public class Splash extends AppCompatActivity {
                 @Override
                 public void run() {
                     //Open the Login Activity after 5 seconds
-                    showProgress(false);
+                    splashbar.setVisibility(View.INVISIBLE);
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                     finish();
@@ -53,7 +53,7 @@ public class Splash extends AppCompatActivity {
                 @Override
                 public void run() {
                     //Open the Login Activity after 5 seconds
-                    showProgress(false);
+                    splashbar.setVisibility(View.INVISIBLE);
                     Intent intent2 = new Intent(getApplicationContext(), Dashboard.class);
                     startActivity(intent2);
                     finish();

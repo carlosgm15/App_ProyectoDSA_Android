@@ -50,24 +50,25 @@ public class MainActivity extends AppCompatActivity {
     public String nameUser,passwordUser;
     private static int REGISTRAR = 1;
     private EditText name, pass;
-    public void showProgress (boolean visible){
+    /*public void showProgress (boolean visible){
         //Sets the visibility/invisibility of loginProgressBar
         loginbar = findViewById(R.id.loginBar);
         if(visible)
             this.loginbar.setVisibility(View.VISIBLE);
         else
             this.loginbar.setVisibility(View.GONE);
-    }
+    }*/
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        loginbar = findViewById(R.id.loginBar);
         pass = (EditText) findViewById(R.id.passwodLogin);
         name = (EditText) findViewById(R.id.usernameLogin);
-        btn = (Button) findViewById(R.id.btnDash);
-        showProgress(false);
+        btn = (Button) findViewById(R.id.btnDash);;
+        this.loginbar.setVisibility(View.VISIBLE);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,10 +104,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Siguiente(View view) {
-        showProgress(true);
+        loginbar.setVisibility(View.VISIBLE);
         Intent siguiente = new Intent(this, MainActivity2.class);
         siguiente.putExtra("nombre", "");
-        showProgress(false);
+        loginbar.setVisibility(View.INVISIBLE);
 
         startActivityForResult(siguiente, REGISTRAR);
         //finish();
@@ -128,15 +129,15 @@ public class MainActivity extends AppCompatActivity {
     }*/
     //Notifica mensajes
     private void NotifyUser(String MSG){
-        showProgress(true);
+        loginbar.setVisibility(View.VISIBLE);
         Toast toast = Toast.makeText(MainActivity.this,MSG,Toast.LENGTH_SHORT);
-        showProgress(false);
+        loginbar.setVisibility(View.INVISIBLE);
         toast.show();
     }
     public void onButtonRegistrarClick (View view) {
         //Retrofit Implementation on Button Press
         //Adding Interceptor
-        showProgress(true);
+        loginbar.setVisibility(View.VISIBLE);
         nameUser = editTextName.getText().toString();
         passwordUser = editTextPassword.getText().toString();
         User usuariotmp = new User();
@@ -155,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                         MainActivity.this.usuario = response.body();
                         NotifyUser("Usuario" +usuario);
                         objetosList = usuario.objetosList;
-                        showProgress(false);
+                        loginbar.setVisibility(View.INVISIBLE);
                         NotifyUser("objetos" + objetosList);
                         Log.d("MYAPP", "La lista de objetos es"+objetosList);
                     /*    mAdapter = new MyAdapter(objetosList);
@@ -163,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
                         //buildRecyclerView();
                         //!!!!!!!!!!!!Lanzar una nueva actividad con otra pantalla
                     }
-                    showProgress(false);
+                    loginbar.setVisibility(View.INVISIBLE);
                     if (response.code() == 409) {NotifyUser("User Duplicado , Inserta de nuevo");}
                 }
 
@@ -174,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
 
             });
         } catch (Exception e) {
-            showProgress(false);
+            loginbar.setVisibility(View.INVISIBLE);
             NotifyUser("Exception: " + e.toString());
         }
 
@@ -203,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        showProgress(true);
+        loginbar.setVisibility(View.VISIBLE);
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
@@ -214,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
                 usuariotmp.setUsername(nameUser);
                 usuariotmp.setPassword(passwordUser);
                 postAddUser(usuariotmp);
-                showProgress(false);
+                loginbar.setVisibility(View.INVISIBLE);
 
             }
 
@@ -230,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void postAddUser (User usuariotmp){
-        showProgress(true);
+        loginbar.setVisibility(View.VISIBLE);
 
         try {
             Call<User> usersCall = userService.addUser(usuariotmp);
@@ -240,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<User> call, Response<User> response) {
                     if (response.code() == 201) {
-                        showProgress(false);
+                        loginbar.setVisibility(View.INVISIBLE);
                         NotifyUser("Successful");
                         MainActivity.this.usuario = response.body();
                         NotifyUser("Usuario" +usuario);
@@ -262,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
 
             });
         } catch (Exception e) {
-            showProgress(false);
+            loginbar.setVisibility(View.INVISIBLE);
             NotifyUser("Exception: " + e.toString());
         }
     }

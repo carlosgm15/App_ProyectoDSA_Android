@@ -1,8 +1,10 @@
 package edu.upc.dsa.app_proyecto;
 
+import Models.Objetos;
 import Models.User;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 
@@ -12,5 +14,13 @@ public interface UserService {
     Call<User> addUser(@Body User u);
     @POST("usuario/logginuser/")
     Call<User> logginUser(@Body User u);
+    @GET("objetos/getobjetos")
+    Call<Objetos> getobjetos(@Body Objetos obj);
+    @POST("objetos/addObjeto")
+    Call<Objetos> addObjeto(@Body Objetos obj);
+    @GET("objetos/{objectName}")
+    Call<Objetos> getobjeto(@Body Objetos obj);
+    @GET("objetos/{objectName}/{nameUser}")
+    Call<Objetos> getobjetoUser(@Body Objetos obj);
 
 }

@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        editTextName = this.findViewById(R.id.usernameLogin);
+        editTextName = this.findViewById(R.id.name);
         editTextPassword = this.findViewById(R.id.passwodLogin);
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
@@ -118,6 +118,11 @@ public class MainActivity extends AppCompatActivity {
                         objetosList = usuario.objetosList;
                         NotifyUser("objetos" + objetosList);
                         Log.d("MYAPP", "La lista de objetos es"+objetosList);
+                        Intent intent = new Intent(MainActivity.this, Dashboard.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        intent.putExtra("name", nameUser);
+                        startActivity(intent);
+                        finish();
                     }
                     loginbar.setVisibility(View.VISIBLE);
                     Espera(2000);

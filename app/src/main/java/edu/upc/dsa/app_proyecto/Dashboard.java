@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import activities_dash.Activity_Ajustes;
 import activities_dash.Activity_Friend;
@@ -18,6 +19,8 @@ public class Dashboard extends AppCompatActivity {
 
     RelativeLayout rellay_ajustes, rellay_friend, rellay_tienda, rellay_score,
             rellay_play, rellay_mapas;
+    private String name;
+    public TextView Name;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dashboard);
@@ -28,6 +31,11 @@ public class Dashboard extends AppCompatActivity {
         rellay_score = findViewById(R.id.rellay_score);
         rellay_play = findViewById(R.id.rellay_play);
         rellay_mapas = findViewById(R.id.rellay_mapa);
+        Bundle bundle=getIntent().getExtras();
+        if(bundle!=null)
+            name=bundle.getString("name");
+        Name = this.findViewById(R.id.usernameLogin);
+        Name.setText(name);
 
         rellay_play.setOnClickListener(new View.OnClickListener() {
             @Override

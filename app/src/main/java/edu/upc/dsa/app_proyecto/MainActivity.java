@@ -83,16 +83,12 @@ public class MainActivity extends AppCompatActivity {
         editTextName = this.findViewById(R.id.usernameLogin);
         editTextPassword = this.findViewById(R.id.passwodLogin);
 
-
-        //Configuracion del retrofit
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         //Attaching Interceptor to a client
         OkHttpClient client = new OkHttpClient().newBuilder().addInterceptor(interceptor).build();
         retrofit = new Retrofit.Builder()
- //               .baseUrl("http://10.0.2.2:8080/dsaApp/")
                .baseUrl("http://147.83.7.204:8080/dsaApp/")
-                // .addConverterFactory(new NullOnEmptyConverterFactory())
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();

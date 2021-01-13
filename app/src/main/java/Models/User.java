@@ -5,6 +5,7 @@ import java.util.List;
 import Models.Objetos;
 
 public class User {
+    public List<Objetos> objetosList;
     String idUser; // id del usuario
     String username; // nombre del usuario
     String apellidos;
@@ -13,8 +14,6 @@ public class User {
     int defensa; // Defensa del usuario
     int dinero; //Dinero del usuario
     int tiempo; // Tiempo que tarda el usuario en pasarse la partida
-
-    List<Objetos> objetosList;
 
     public User() {
     }

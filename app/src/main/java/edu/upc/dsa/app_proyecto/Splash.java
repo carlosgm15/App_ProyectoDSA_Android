@@ -28,10 +28,10 @@ public class Splash extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        splashbar =findViewById(R.id.indeterminateBar);
-        splashbar.setVisibility(View.VISIBLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        splashbar =findViewById(R.id.progressBar);
+        splashbar.setVisibility(View.VISIBLE);
         this.username = ReadSharedPreference("nameUser");
         this.pass = ReadSharedPreference("passwordUser");
 
@@ -41,7 +41,7 @@ public class Splash extends AppCompatActivity {
                 @Override
                 public void run() {
                     //Open the Login Activity after 5 seconds
-                    splashbar.setVisibility(View.INVISIBLE);
+                    //splashbar.setVisibility(View.INVISIBLE);
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                     finish();

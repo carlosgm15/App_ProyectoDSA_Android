@@ -74,11 +74,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Esto es configuracion del recycler
-        /*recyclerView = findViewById(R.id.my_recycler_view);
-        recyclerView.setHasFixedSize(false);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);*/
 
         editTextName = this.findViewById(R.id.usernameLogin);
         editTextPassword = this.findViewById(R.id.passwodLogin);

@@ -34,13 +34,6 @@ public class MainActivity extends AppCompatActivity {
     Button btn;
     //crear retrofit
     Retrofit retrofit;
-
-    //Para crear el recycler
-    private RecyclerView recyclerView;
-    //  private RecyclerView.Adapter mAdapter;
-    //private MyAdapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
-
     //para la interfaz
     UserService userService;
 
@@ -52,14 +45,11 @@ public class MainActivity extends AppCompatActivity {
     public TextView editTextName, editTextPassword ;
     public String nameUser,passwordUser;
     private static int REGISTRAR = 1;
-    private EditText name, pass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         loginbar = findViewById(R.id.loginBar);
-        //pass = (EditText) findViewById(R.id.passwodLogin);
-        //name = (EditText) findViewById(R.id.usernameLogin);
         btn = (Button) findViewById(R.id.btnDash);;
         loginbar.setVisibility(View.INVISIBLE);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -96,23 +86,7 @@ public class MainActivity extends AppCompatActivity {
         Intent siguiente = new Intent(this, MainActivity2.class);
         siguiente.putExtra("nombre", "");
         startActivityForResult(siguiente, REGISTRAR);
-        //finish();
     }
-
-    /*public void btnLogin_Click(View view) {
-        final EditText usernameR = (EditText) findViewById(R.id.usernameLogin);
-        final EditText passwordR = (EditText) findViewById(R.id.passwodLogin);
-        String usuario = usernameR.getText().toString();
-        String password = passwordR.getText().toString();
-
-        if (usuario.isEmpty() && password.isEmpty())
-            Toast.makeText(MainActivity.this,"Error: Inserte un usuario y una contraseña",Toast.LENGTH_LONG).show();
-        else if (usuario.contentEquals("jose") && password.contentEquals("123"))
-            Toast.makeText(MainActivity.this,"Loggin realizado: Usuario y contraseña correcta",Toast.LENGTH_LONG).show();
-        else if (usuario.contentEquals("jose") && password.contentEquals("123")==false)
-            Toast.makeText(MainActivity.this,"Error: Contraseña incorrecta",Toast.LENGTH_LONG).show();
-
-    }*/
     //Notifica mensajes
     private void NotifyUser(String MSG){
         loginbar.setVisibility(View.VISIBLE);
@@ -144,10 +118,6 @@ public class MainActivity extends AppCompatActivity {
                         objetosList = usuario.objetosList;
                         NotifyUser("objetos" + objetosList);
                         Log.d("MYAPP", "La lista de objetos es"+objetosList);
-                    /*    mAdapter = new MyAdapter(objetosList);
-                        recyclerView.setAdapter(mAdapter);*/
-                        //buildRecyclerView();
-                        //!!!!!!!!!!!!Lanzar una nueva actividad con otra pantalla
                     }
                     loginbar.setVisibility(View.VISIBLE);
                     Espera(2000);
@@ -168,26 +138,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-   /* private void buildRecyclerView(){
-        // define an adapter y le paso el contenido que tiene que adaptar
-        mAdapter = new MyAdapter(objetosList);
-        recyclerView.setAdapter(mAdapter);
-        //para coger la posicion del item que he clicado y llamoa la interfaz del adaptador
-
-        mAdapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(int position) {
-                NotifyUser("Posicion clickada" +position);
-                //lanzarias el Objetos Activity que tendra la descripcion detallada del objeto
-                //ObjetosActivity(position,false);
-            }
-
-
-        });
-    }*/
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -217,8 +167,6 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             public void run() {
                 // acciones que se ejecutan tras los milisegundos
-                //Toast toast = Toast.makeText(getApplicationContext(), "Listo", Toast.LENGTH_SHORT);
-               // toast.show();
                 loginbar.setVisibility(View.INVISIBLE);
             }
         }, milisegundos);
@@ -241,9 +189,6 @@ public class MainActivity extends AppCompatActivity {
                         objetosList = usuario.objetosList;
                         NotifyUser("objetos" + objetosList);
                         Log.d("MYAPP", "La lista de objetos es"+objetosList);
-                    /*    mAdapter = new MyAdapter(objetosList);
-                        recyclerView.setAdapter(mAdapter);*/
-                        //buildRecyclerView();
                         //Lanzar una nueva actividad con otra pantalla
                     }
                     if (response.code() == 409) {NotifyUser("User Duplicado , Inserta de nuevo");}

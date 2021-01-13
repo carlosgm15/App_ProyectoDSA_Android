@@ -58,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         loginbar = findViewById(R.id.loginBar);
-        pass = (EditText) findViewById(R.id.passwodLogin);
-        name = (EditText) findViewById(R.id.usernameLogin);
+        //pass = (EditText) findViewById(R.id.passwodLogin);
+        //name = (EditText) findViewById(R.id.usernameLogin);
         btn = (Button) findViewById(R.id.btnDash);;
         loginbar.setVisibility(View.INVISIBLE);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -75,10 +75,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Esto es configuracion del recycler
-        recyclerView = findViewById(R.id.my_recycler_view);
+        /*recyclerView = findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(false);
         layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(layoutManager);*/
 
         editTextName = this.findViewById(R.id.usernameLogin);
         editTextPassword = this.findViewById(R.id.passwodLogin);
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         Espera(4000);
         Toast toast = Toast.makeText(MainActivity.this,MSG,Toast.LENGTH_SHORT);
     }
-    public void onButtonRegistrarClick (View view) {
+    public void onButtonLoginClick(View view) {
         //Retrofit Implementation on Button Press
         //Adding Interceptor
         nameUser = editTextName.getText().toString();
@@ -228,6 +228,7 @@ public class MainActivity extends AppCompatActivity {
                 // acciones que se ejecutan tras los milisegundos
                 //Toast toast = Toast.makeText(getApplicationContext(), "Listo", Toast.LENGTH_SHORT);
                // toast.show();
+                loginbar.setVisibility(View.INVISIBLE);
             }
         }, milisegundos);
     }

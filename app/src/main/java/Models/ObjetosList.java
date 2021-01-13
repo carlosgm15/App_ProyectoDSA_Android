@@ -1,5 +1,6 @@
-package edu.upc.dsa.app_proyecto;
+package Models;
 import java.util.List;
+
 public class ObjetosList {
     private static ObjetosList objetolistinstance;
     private List<Objetos> objetolist;

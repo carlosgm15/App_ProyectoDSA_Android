@@ -1,4 +1,4 @@
-package edu.upc.dsa.app_proyecto;
+package activities_dash;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,27 +7,30 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-public class Activity_Ajustes extends AppCompatActivity {
-RelativeLayout rellay_idioma,rellay_sonido;
+import edu.upc.dsa.app_proyecto.R;
+
+public class Activity_Score extends AppCompatActivity {
+RelativeLayout rellay_ind,rellay_coop;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ajustes);
-        rellay_idioma = findViewById(R.id.rellay_idioma);
-        rellay_sonido = findViewById(R.id.rellay_sonido);
+        setContentView(R.layout.activity_score);
 
-        rellay_idioma.setOnClickListener(new View.OnClickListener() {
+        rellay_ind = findViewById(R.id.rellay_ind);
+        rellay_coop = findViewById(R.id.rellay_coop);
+
+        rellay_ind.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Activity_Ajustes.this, Activity_Idioma.class);
+                Intent intent = new Intent(Activity_Score.this, Activity_ScoreInd.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
             }
         });
-        rellay_sonido.setOnClickListener(new View.OnClickListener() {
+        rellay_coop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Activity_Ajustes.this, Activity_Sonido.class);
+                Intent intent = new Intent(Activity_Score.this, Activity_ScoreCoop.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
             }

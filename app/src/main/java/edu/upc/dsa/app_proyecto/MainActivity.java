@@ -19,6 +19,8 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import Models.Objetos;
+import Models.User;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;

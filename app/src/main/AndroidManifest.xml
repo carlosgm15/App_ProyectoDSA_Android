@@ -14,34 +14,34 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Activity_Tienda"
+            android:name="activities_dash.Activity_Tienda"
             android:theme="@style/ThemeSonido" />
         <activity
-            android:name=".Activity_Friend"
+            android:name="activities_dash.Activity_Friend"
             android:theme="@style/ThemeFriends" />
         <activity
-            android:name=".Activity_ScoreCoop"
+            android:name="activities_dash.Activity_ScoreCoop"
             android:theme="@style/ThemeIdioma" />
         <activity
-            android:name=".Activity_ScoreInd"
+            android:name="activities_dash.Activity_ScoreInd"
             android:theme="@style/ThemeAjustes" />
         <activity
-            android:name=".Activity_Idioma"
+            android:name="activities_dash.Activity_Idioma"
             android:theme="@style/ThemeIdioma" />
         <activity
-            android:name=".Activity_Sonido"
+            android:name="activities_dash.Activity_Sonido"
             android:theme="@style/ThemeSonido" />
         <activity
-            android:name=".Activity_Score"
+            android:name="activities_dash.Activity_Score"
             android:theme="@style/ThemeScore" />
         <activity
-            android:name=".Activity_Mapas"
+            android:name="activities_dash.Activity_Mapas"
             android:theme="@style/ThemeIdioma" />
         <activity
-            android:name=".Activity_Ajustes"
+            android:name="activities_dash.Activity_Ajustes"
             android:theme="@style/ThemeAjustes" />
         <activity
-            android:name=".Activity_Play"
+            android:name="activities_dash.Activity_Play"
             android:theme="@style/ThemePlay" />
         <activity android:name=".Dashboard" />
         <activity android:name=".MainActivity2" />

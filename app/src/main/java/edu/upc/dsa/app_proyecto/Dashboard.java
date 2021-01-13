@@ -7,6 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
 
+import activities_dash.Activity_Ajustes;
+import activities_dash.Activity_Friend;
+import activities_dash.Activity_Mapas;
+import activities_dash.Activity_Play;
+import activities_dash.Activity_Score;
+import activities_dash.Activity_Tienda;
+
 public class Dashboard extends AppCompatActivity {
 
     RelativeLayout rellay_ajustes, rellay_friend, rellay_tienda, rellay_score,

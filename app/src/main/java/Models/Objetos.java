@@ -1,4 +1,4 @@
-package edu.upc.dsa.app_proyecto;
+package Models;
 
 public class Objetos {
     String nombre;

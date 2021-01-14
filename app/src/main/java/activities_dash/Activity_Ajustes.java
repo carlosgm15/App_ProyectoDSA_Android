@@ -11,12 +11,16 @@ import edu.upc.dsa.app_proyecto.R;
 
 public class Activity_Ajustes extends AppCompatActivity {
 RelativeLayout rellay_idioma,rellay_sonido;
+private String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajustes);
         rellay_idioma = findViewById(R.id.rellay_idioma);
         rellay_sonido = findViewById(R.id.rellay_sonido);
+        Bundle bundle=getIntent().getExtras();
+        if(bundle!=null)
+            name=bundle.getString("nombre");
 
         rellay_idioma.setOnClickListener(new View.OnClickListener() {
             @Override

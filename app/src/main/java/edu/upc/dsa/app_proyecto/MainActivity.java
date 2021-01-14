@@ -31,7 +31,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
-    Button btn;
+    Button btnDash;
     //crear retrofit
     Retrofit retrofit;
     //para la interfaz
@@ -50,19 +50,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         loginbar = findViewById(R.id.loginBar);
-        btn = (Button) findViewById(R.id.btnDash);;
+        btnDash = (Button) findViewById(R.id.btnDash);;
         loginbar.setVisibility(View.INVISIBLE);
-        btn.setOnClickListener(new View.OnClickListener() {
+        /*btnDash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loginbar.setVisibility(View.VISIBLE);
                 Espera(2000);
                 Intent intent = new Intent(MainActivity.this, Dashboard.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                intent.putExtra("name", nameUser);
                 startActivity(intent);
                 finish();
             }
-        });
+        });*/
 
 
         editTextName = this.findViewById(R.id.name);
@@ -94,51 +95,60 @@ public class MainActivity extends AppCompatActivity {
         Toast toast = Toast.makeText(MainActivity.this,MSG,Toast.LENGTH_SHORT);
     }
     public void onButtonLoginClick(View view) {
-        //Retrofit Implementation on Button Press
-        //Adding Interceptor
         nameUser = editTextName.getText().toString();
         passwordUser = editTextPassword.getText().toString();
-        User usuariotmp = new User();
-        //
-        usuariotmp.setUsername(nameUser);
-        usuariotmp.setPassword(passwordUser);
-        try {
-            Call<User> usersCall = userService.logginUser(usuariotmp);
-            /* Android Doesn't allow synchronous execution of Http Request and so we must put it in queue*/
-            usersCall.enqueue(new Callback<User>() {
+        if (nameUser == null || passwordUser == null)
+        {
+            Toast toast = Toast.makeText(getApplicationContext(), "Campos vacios", Toast.LENGTH_SHORT);
+            toast.show();
 
-                @Override
-                public void onResponse(Call<User> call, Response<User> response) {
-                    if (response.code() == 201) {
+        }
+        else {
+
+            User usuariotmp = new User();
+            //
+            usuariotmp.setUsername(nameUser);
+            usuariotmp.setPassword(passwordUser);
+            try {
+                Call<User> usersCall = userService.logginUser(usuariotmp);
+                /* Android Doesn't allow synchronous execution of Http Request and so we must put it in queue*/
+                usersCall.enqueue(new Callback<User>() {
+
+                    @Override
+                    public void onResponse(Call<User> call, Response<User> response) {
+                        if (response.code() == 201) {
+                            loginbar.setVisibility(View.VISIBLE);
+                            Espera(4000);
+                            NotifyUser("Successful");
+                            MainActivity.this.usuario = response.body();
+                            NotifyUser("Usuario" + usuario);
+                            objetosList = usuario.objetosList;
+                            NotifyUser("objetos" + objetosList);
+                            Log.d("MYAPP", "La lista de objetos es" + objetosList);
+                            // Intent intent = new Intent(MainActivity.this, Dashboard.class);
+                            //intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                            // intent.putExtra("name", nameUser);
+                            // startActivity(intent);
+                            //finish();
+                        }
                         loginbar.setVisibility(View.VISIBLE);
-                        Espera(4000);
-                        NotifyUser("Successful");
-                        MainActivity.this.usuario = response.body();
-                        NotifyUser("Usuario" +usuario);
-                        objetosList = usuario.objetosList;
-                        NotifyUser("objetos" + objetosList);
-                        Log.d("MYAPP", "La lista de objetos es"+objetosList);
-                        Intent intent = new Intent(MainActivity.this, Dashboard.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                        intent.putExtra("name", nameUser);
-                        startActivity(intent);
-                        finish();
+                        Espera(2000);
+                        if (response.code() == 409) {
+                            NotifyUser("User Duplicado , Inserta de nuevo");
+                        }
                     }
-                    loginbar.setVisibility(View.VISIBLE);
-                    Espera(2000);
-                    if (response.code() == 409) {NotifyUser("User Duplicado , Inserta de nuevo");}
-                }
 
-                @Override
-                public void onFailure(Call<User> call, Throwable t) {
-                    NotifyUser("Error Server");
-                }
+                    @Override
+                    public void onFailure(Call<User> call, Throwable t) {
+                        NotifyUser("Error Server");
+                    }
 
-            });
-        } catch (Exception e) {
-            loginbar.setVisibility(View.VISIBLE);
-            Espera(4000);
-            NotifyUser("Exception: " + e.toString());
+                });
+            } catch (Exception e) {
+                loginbar.setVisibility(View.VISIBLE);
+                Espera(4000);
+                NotifyUser("Exception: " + e.toString());
+            }
         }
 
 

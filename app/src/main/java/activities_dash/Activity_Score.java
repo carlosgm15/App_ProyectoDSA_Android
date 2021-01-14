@@ -11,6 +11,7 @@ import edu.upc.dsa.app_proyecto.R;
 
 public class Activity_Score extends AppCompatActivity {
 RelativeLayout rellay_ind,rellay_coop;
+    private String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +19,9 @@ RelativeLayout rellay_ind,rellay_coop;
 
         rellay_ind = findViewById(R.id.rellay_ind);
         rellay_coop = findViewById(R.id.rellay_coop);
+        Bundle bundle=getIntent().getExtras();
+        if(bundle!=null)
+            name=bundle.getString("nombre");
 
         rellay_ind.setOnClickListener(new View.OnClickListener() {
             @Override

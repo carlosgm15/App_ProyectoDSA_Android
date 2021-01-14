@@ -7,10 +7,13 @@ import android.os.Bundle;
 import edu.upc.dsa.app_proyecto.R;
 
 public class Activity_Friend extends AppCompatActivity {
-
+    private String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__friend);
+        Bundle bundle=getIntent().getExtras();
+        if(bundle!=null)
+            name=bundle.getString("nombre");
     }
 }

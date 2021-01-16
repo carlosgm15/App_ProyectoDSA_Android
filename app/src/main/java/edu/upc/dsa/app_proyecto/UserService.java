@@ -6,6 +6,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 
 public interface UserService {
@@ -15,7 +16,7 @@ public interface UserService {
     @POST("usuario/logginuser/")
     Call<User> logginUser(@Body User u);
     @GET("usuario/gettuser/{id}")
-    Call<User> gettuser(@Body User u);
+    Call<User> gettuser(@Path("id") String id);
 
     @GET("objetos/getobjetos")
     Call<Objetos> getobjetos(@Body Objetos obj);

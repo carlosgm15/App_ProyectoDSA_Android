@@ -53,12 +53,12 @@ private String name, id;
                 .client(client)
                 .build();
         userService = retrofit.create(UserService.class);
-        User usuariotmp = new User();
+        User usuariotmp2 = new User();
         //
-        usuariotmp.setUsername(name);
-        usuariotmp.setId(id);
+        usuariotmp2.setUsername(name);
+        usuariotmp2.setId(id);
         try {
-            Call<User> usersCall = userService.gettuser(usuariotmp);
+            Call<User> usersCall = userService.gettuser(id);
             // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
             usersCall.enqueue(new Callback<User>() {
 
@@ -70,7 +70,7 @@ private String name, id;
                         Activity_Tienda.this.usuario = response.body();
                         objetosList = usuario.objetosList;
                         Dinero = usuario.getDinero();
-                        dinero.setText("Dinero = "+ dinero);
+                        dinero.setText("Dinero = "+ Dinero);
 
                     }
 

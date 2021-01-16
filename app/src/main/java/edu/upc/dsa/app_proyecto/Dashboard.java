@@ -20,7 +20,7 @@ public class Dashboard extends AppCompatActivity {
 
     RelativeLayout rellay_ajustes, rellay_friend, rellay_tienda, rellay_score,
             rellay_play, rellay_mapas;
-    private String name;
+    private String name, id;
     public TextView Name;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +36,8 @@ public class Dashboard extends AppCompatActivity {
         Bundle bundle=getIntent().getExtras();
         if(bundle!=null)
             name=bundle.getString("name");
+            id=bundle.getString("id");
+
         Name = this.findViewById(R.id.name);
         Name.setText(name);
 
@@ -43,7 +45,8 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Dashboard.this, Activity_Play.class);
-                intent.putExtra("nombre", name);
+                intent.putExtra("name", name);
+                intent.putExtra("id", id);
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
             }
@@ -52,7 +55,8 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Dashboard.this, Activity_Ajustes.class);
-                intent.putExtra("nombre", name);
+                intent.putExtra("name", name);
+                intent.putExtra("id", id);
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
             }
@@ -61,7 +65,8 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Dashboard.this, Activity_Tienda.class);
-                intent.putExtra("nombre", name);
+                intent.putExtra("name", name);
+                intent.putExtra("id", id);
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
             }
@@ -70,7 +75,8 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Dashboard.this, Activity_Friend.class);
-                intent.putExtra("nombre", name);
+                intent.putExtra("name", name);
+                intent.putExtra("id", id);
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
             }
@@ -79,7 +85,8 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Dashboard.this, Activity_Score.class);
-                intent.putExtra("nombre", name);
+                intent.putExtra("name", name);
+                intent.putExtra("id", id);
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
             }
@@ -88,7 +95,8 @@ public class Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Dashboard.this, Activity_Mapas.class);
-                intent.putExtra("nombre", name);
+                intent.putExtra("name", name);
+                intent.putExtra("id", id);
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
             }

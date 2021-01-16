@@ -6,7 +6,7 @@ import Models.Objetos;
 
 public class User {
     public List<Objetos> objetosList;
-    String idUser; // id del usuario
+    String id; // id del usuario
     String username; // nombre del usuario
     String apellidos;
     String password; // password del usuario
@@ -18,8 +18,9 @@ public class User {
     public User() {
     }
 
-    public User(String username, String password, int vida, int defensa, int dinero, int tiempo, List<Objetos> objetosList) {
+    public User(String username,String id, String password, int vida, int defensa, int dinero, int tiempo, List<Objetos> objetosList) {
         this();
+        this.id=id;
         this.username = username;
         this.password = password;
         this.vida = vida;
@@ -29,12 +30,12 @@ public class User {
         this.objetosList = objetosList;
     }
 
-    public String getIdUser() {
-        return idUser;
+    public String getId() {
+        return id;
     }
 
-    public void setIdUser(String idUser) {
-        this.idUser = idUser;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -100,7 +101,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "idUser='" + idUser + '\'' +
+                "idUser='" + id + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", vida=" + vida +

@@ -14,6 +14,9 @@ public interface UserService {
     Call<User> addUser(@Body User u);
     @POST("usuario/logginuser/")
     Call<User> logginUser(@Body User u);
+    @GET("usuario/gettuser/{id}")
+    Call<User> gettuser(@Body User u);
+
     @GET("objetos/getobjetos")
     Call<Objetos> getobjetos(@Body Objetos obj);
     @POST("objetos/addObjeto")

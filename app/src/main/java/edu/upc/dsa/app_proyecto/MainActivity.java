@@ -2,18 +2,13 @@ package edu.upc.dsa.app_proyecto;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     List<Objetos> objetosList;
 
     public TextView editTextName, editTextPassword ;
-    public String nameUser,passwordUser;
+    public String nameUser,passwordUser, id;
     private static int REGISTRAR = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,11 +122,13 @@ public class MainActivity extends AppCompatActivity {
                             MainActivity.this.usuario = response.body();
                             NotifyUser("Usuario" + usuario);
                             objetosList = usuario.objetosList;
+                            id= usuario.getId();
                             NotifyUser("objetos" + objetosList);
                             Log.d("MYAPP", "La lista de objetos es" + objetosList);
                             Intent intent = new Intent(MainActivity.this, Dashboard.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             intent.putExtra("name", nameUser);
+                            intent.putExtra("id", id);
                             startActivity(intent);
                             //finish();
                         }

@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         loginbar = findViewById(R.id.loginBar);
         btnDash = (Button) findViewById(R.id.btnDash);;
         loginbar.setVisibility(View.INVISIBLE);
-        /*btnDash.setOnClickListener(new View.OnClickListener() {
+        btnDash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loginbar.setVisibility(View.VISIBLE);
@@ -63,10 +63,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        });*/
+        });
 
 
-        editTextName = this.findViewById(R.id.name);
+        editTextName = this.findViewById(R.id.usernameLogin);
         editTextPassword = this.findViewById(R.id.passwodLogin);
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
@@ -95,6 +95,9 @@ public class MainActivity extends AppCompatActivity {
         Toast toast = Toast.makeText(MainActivity.this,MSG,Toast.LENGTH_SHORT);
     }
     public void onButtonLoginClick(View view) {
+        Log.i("marc", "Fent el logging");
+        Log.i("marc", ""+editTextName);
+        Log.i("marc", ""+editTextPassword);
         nameUser = editTextName.getText().toString();
         passwordUser = editTextPassword.getText().toString();
         if (nameUser == null || passwordUser == null)
@@ -111,11 +114,12 @@ public class MainActivity extends AppCompatActivity {
             usuariotmp.setPassword(passwordUser);
             try {
                 Call<User> usersCall = userService.logginUser(usuariotmp);
-                /* Android Doesn't allow synchronous execution of Http Request and so we must put it in queue*/
+                // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
                 usersCall.enqueue(new Callback<User>() {
 
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
+                        Log.i("marc", ""+response.code());
                         if (response.code() == 201) {
                             loginbar.setVisibility(View.VISIBLE);
                             Espera(4000);
@@ -125,10 +129,10 @@ public class MainActivity extends AppCompatActivity {
                             objetosList = usuario.objetosList;
                             NotifyUser("objetos" + objetosList);
                             Log.d("MYAPP", "La lista de objetos es" + objetosList);
-                            // Intent intent = new Intent(MainActivity.this, Dashboard.class);
-                            //intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                            // intent.putExtra("name", nameUser);
-                            // startActivity(intent);
+                            Intent intent = new Intent(MainActivity.this, Dashboard.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                            intent.putExtra("name", nameUser);
+                            startActivity(intent);
                             //finish();
                         }
                         loginbar.setVisibility(View.VISIBLE);
@@ -140,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<User> call, Throwable t) {
+                        Log.e("marc", "on failure",t);
                         NotifyUser("Error Server");
                     }
 
@@ -170,13 +175,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void SaveLoginSharedPreference(String nameUser, String passwordUser) {
+    /*private void SaveLoginSharedPreference(String nameUser, String passwordUser) {
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("nameUser", nameUser);
         editor.putString("passwordUser", passwordUser);
         editor.apply();
-    }
+    }*/
     public void Espera (int milisegundos) {
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

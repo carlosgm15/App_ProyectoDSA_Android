@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ public class Dashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dashboard);
+        Log.i("marc", "Dashboard");
 
         rellay_ajustes = findViewById(R.id.rellay_ajustes);
         rellay_tienda = findViewById(R.id.rellay_tienda);
@@ -34,7 +36,7 @@ public class Dashboard extends AppCompatActivity {
         Bundle bundle=getIntent().getExtras();
         if(bundle!=null)
             name=bundle.getString("name");
-        Name = this.findViewById(R.id.usernameLogin);
+        Name = this.findViewById(R.id.name);
         Name.setText(name);
 
         rellay_play.setOnClickListener(new View.OnClickListener() {

@@ -1,5 +1,7 @@
 package edu.upc.dsa.app_proyecto;
 
+import java.util.List;
+
 import Models.Objetos;
 import Models.User;
 import retrofit2.Call;
@@ -19,7 +21,9 @@ public interface UserService {
     Call<User> gettuser(@Path("id") String id);
 
     @GET("objetos/getobjetos")
-    Call<Objetos> getobjetos(@Body Objetos obj);
+    Call<List<Objetos>> getobjetos();
+
+
     @POST("objetos/addObjeto")
     Call<Objetos> addObjeto(@Body Objetos obj);
     @GET("objetos/{objectName}")

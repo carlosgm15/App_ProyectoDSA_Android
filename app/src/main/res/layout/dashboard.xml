@@ -82,40 +82,6 @@
                     </RelativeLayout>
                 </RelativeLayout>
 
-                <RelativeLayout
-                    android:id="@+id/rellay_friend"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.65"
-                    android:background="@color/gris"
-                    android:clickable="true"
-                    android:foreground="?attr/selectableItemBackground">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true">
-
-                        <ImageView
-                            android:id="@+id/imgView4"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:layout_centerHorizontal="true"
-                            android:adjustViewBounds="true"
-                            android:padding="8dp"
-                            android:scaleType="centerInside"
-                            android:src="@drawable/amigos" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/imgView4"
-                            android:layout_centerHorizontal="true"
-                            android:text="Amigos"
-                            android:textColor="@color/black"
-                            android:textSize="14dp"></TextView>
-                    </RelativeLayout>
-                </RelativeLayout>
 
             </LinearLayout>
 
@@ -130,11 +96,11 @@
                 android:background="@color/amarillo">
 
                 <RelativeLayout
-                    android:id="@+id/rellay_mapa"
+                    android:id="@+id/rellay_tienda"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="0.65"
-                    android:background="@color/rosa"
+                    android:background="@color/amarillo3"
                     android:clickable="true"
                     android:foreground="?attr/selectableItemBackground">
 
@@ -144,56 +110,21 @@
                         android:layout_centerInParent="true">
 
                         <ImageView
-                            android:id="@+id/imgView5"
+                            android:id="@+id/imgView2"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
                             android:layout_centerHorizontal="true"
                             android:adjustViewBounds="true"
                             android:padding="8dp"
                             android:scaleType="centerInside"
-                            android:src="@drawable/mapa" />
+                            android:src="@drawable/tienda" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/imgView5"
+                            android:layout_below="@+id/imgView2"
                             android:layout_centerHorizontal="true"
-                            android:text="Mapas"
-                            android:textColor="@color/black"
-                            android:textSize="14dp"></TextView>
-                    </RelativeLayout>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/rellay_score"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.65"
-                    android:background="@color/purple_200"
-                    android:clickable="true"
-                    android:foreground="?attr/selectableItemBackground">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true">
-
-                        <ImageView
-                            android:id="@+id/imgView6"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:layout_centerHorizontal="true"
-                            android:adjustViewBounds="true"
-                            android:padding="8dp"
-                            android:scaleType="centerInside"
-                            android:src="@drawable/score" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/imgView6"
-                            android:layout_centerHorizontal="true"
-                            android:text="Score"
+                            android:text="Tienda"
                             android:textColor="@color/black"
                             android:textSize="14dp"></TextView>
                     </RelativeLayout>
@@ -245,13 +176,12 @@
                             android:textSize="14dp"></TextView>
                     </RelativeLayout>
                 </RelativeLayout>
-
                 <RelativeLayout
-                    android:id="@+id/rellay_tienda"
+                    android:id="@+id/rellay_score"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="0.65"
-                    android:background="@color/amarillo3"
+                    android:background="@color/purple_200"
                     android:clickable="true"
                     android:foreground="?attr/selectableItemBackground">
 
@@ -261,21 +191,21 @@
                         android:layout_centerInParent="true">
 
                         <ImageView
-                            android:id="@+id/imgView2"
+                            android:id="@+id/imgView6"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
                             android:layout_centerHorizontal="true"
                             android:adjustViewBounds="true"
                             android:padding="8dp"
                             android:scaleType="centerInside"
-                            android:src="@drawable/tienda" />
+                            android:src="@drawable/score" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/imgView2"
+                            android:layout_below="@+id/imgView6"
                             android:layout_centerHorizontal="true"
-                            android:text="Tienda"
+                            android:text="Perfil"
                             android:textColor="@color/black"
                             android:textSize="14dp"></TextView>
                     </RelativeLayout>

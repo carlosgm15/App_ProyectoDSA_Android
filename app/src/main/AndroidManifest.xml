@@ -17,9 +17,6 @@
             android:name="activities_dash.Activity_Tienda"
             android:theme="@style/ThemeSonido" />
         <activity
-            android:name="activities_dash.Activity_Friend"
-            android:theme="@style/ThemeFriends" />
-        <activity
             android:name="activities_dash.Activity_ScoreCoop"
             android:theme="@style/ThemeIdioma" />
         <activity
@@ -34,9 +31,6 @@
         <activity
             android:name="activities_dash.Activity_Score"
             android:theme="@style/ThemeScore" />
-        <activity
-            android:name="activities_dash.Activity_Mapas"
-            android:theme="@style/ThemeIdioma" />
         <activity
             android:name="activities_dash.Activity_Ajustes"
             android:theme="@style/ThemeAjustes" />

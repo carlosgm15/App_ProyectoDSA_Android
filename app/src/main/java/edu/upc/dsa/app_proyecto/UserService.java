@@ -25,7 +25,7 @@ public interface UserService {
 
 
     @POST("Objetos/addobjeto")
-    Call<Objetos> addobjeto(@Body Objetos obj);
+    Call<Void> addobjeto(@Body Objetos obj);
 
 
     @GET("objetos/{objectName}")

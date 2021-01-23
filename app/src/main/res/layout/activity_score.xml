@@ -58,7 +58,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/imgView3"
                             android:layout_centerHorizontal="true"
-                            android:text="Estadisticas individuales"
+                            android:text="Perfil usuario"
                             android:textColor="@color/black"
                             android:textSize="14dp"></TextView>
                     </RelativeLayout>

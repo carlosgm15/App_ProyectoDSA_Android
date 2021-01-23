@@ -36,7 +36,7 @@ public class Activity_Tienda extends AppCompatActivity {
     UserService userService;
     List<Objetos> lista;
     User usuario;
-    public TextView dinero, prueba;
+    public TextView dinero;
     public int Dinero, Prueba;
     Objetos bolsabasura, mascarilla, pocion, regeneron, pcr;
 
@@ -122,11 +122,11 @@ public class Activity_Tienda extends AppCompatActivity {
     }
     public void onButtonBotiquinClick(View view) {
         regeneron.setUserId(usuario.getId());
-        Call<Objetos> objetosCall2 = userService.addobjeto(regeneron);
+        Call<Void> objetosCall2 = userService.addobjeto(regeneron);
         // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
-        objetosCall2.enqueue(new Callback <Objetos>() {
+        objetosCall2.enqueue(new Callback <Void>() {
             @Override
-            public void onResponse(Call<Objetos> call, Response<Objetos> response) {
+            public void onResponse(Call<Void> call, Response<Void> response) {
                 if(response.code() == 201){
                     NotifyUser("Succesful");
                     dinero.setText("Dinero = " + usuario.getDinero());
@@ -151,7 +151,7 @@ public class Activity_Tienda extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Objetos> call, Throwable t) {
+            public void onFailure(Call<Void> call, Throwable t) {
                 NotifyUser("Error server");
             }
         });

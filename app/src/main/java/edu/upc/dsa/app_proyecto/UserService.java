@@ -20,7 +20,7 @@ public interface UserService {
     @GET("usuario/gettuser/{id}")
     Call<User> gettuser(@Path("id") String id);
 
-    @GET("objetos/getobjetos")
+    @GET("Objetos/getobjetos")
     Call<List<Objetos>> getobjetos();
 
 

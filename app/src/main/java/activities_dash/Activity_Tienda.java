@@ -98,7 +98,7 @@ public class Activity_Tienda extends AppCompatActivity {
                         ObjetosList List = ObjetosList.getInstance();
                         List.setList(response.body());
                        // Prueba = List[0];
-                        prueba.setText("Prueba = " + Prueba);
+                        //prueba.setText("Prueba = " + List.size());
                 }
 
                 @Override

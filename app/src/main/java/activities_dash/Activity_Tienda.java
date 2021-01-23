@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +29,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Activity_Tienda extends AppCompatActivity {
     private String name, id;
+    int coste, coste2;
     Retrofit retrofit;
+    Button boton;
     //para la interfaz
     UserService userService;
     List<Objetos> lista;
@@ -41,12 +44,13 @@ public class Activity_Tienda extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__tienda);
+        boton = (Button) findViewById(R.id.buttonBotiquin);
+        boton.setText("boton");
         Bundle bundle = getIntent().getExtras();
         if (bundle != null)
             name = bundle.getString("name");
         id = bundle.getString("id");
         dinero = this.findViewById(R.id.dinero);
-        prueba = this.findViewById(R.id.prueba);
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         //Attaching Interceptor to a client
@@ -97,8 +101,11 @@ public class Activity_Tienda extends AppCompatActivity {
                 public void onResponse(Call<List<Objetos>> call, Response<List<Objetos>> response) {
                         ObjetosList List = ObjetosList.getInstance();
                         List.setList(response.body());
-                       // Prueba = List[0];
-                        //prueba.setText("Prueba = " + List.size());
+                        bolsabasura = List.getList().get(0);
+                        mascarilla = List.getList().get(1);
+                        pocion = List.getList().get(2);
+                        regeneron = List.getList().get(3);
+                        pcr = List.getList().get(4);
                 }
 
                 @Override
@@ -112,6 +119,78 @@ public class Activity_Tienda extends AppCompatActivity {
 
             NotifyUser("Exception: " + e.toString());
         }
+    }
+    public void onButtonBotiquinClick(View view) {
+        regeneron.setUserId(usuario.getId());
+        Call<Objetos> objetosCall2 = userService.addobjeto(regeneron);
+        // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
+        objetosCall2.enqueue(new Callback <Objetos>() {
+            @Override
+            public void onResponse(Call<Objetos> call, Response<Objetos> response) {
+                if(response.code() == 201){
+                    NotifyUser("Succesful");
+                    dinero.setText("Dinero = " + usuario.getDinero());
+
+                }
+
+                if(response.code() == 400){
+                    NotifyUser("Bad request");
+                    dinero.setText("Dinero = " + usuario.getDinero());
+                }
+
+                if(response.code() == 402){
+                    NotifyUser("No tienes dinero");
+                    dinero.setText("Dinero = " + usuario.getDinero());
+                }
+
+                if(response.code() == 409){
+                    NotifyUser("Ya tienes comprado este objeto");
+                    dinero.setText("Dinero = " + usuario.getDinero());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Objetos> call, Throwable t) {
+                NotifyUser("Error server");
+            }
+        });
+    }
+    public void onButtonPocionClick(View view) {
+        usuario.objetosList.add(pocion);
+        coste = usuario.getDinero();
+        coste2 = pocion.getCoste();
+        coste = coste-coste2;
+        usuario.setDinero(coste);
+        dinero.setText("Dinero = " + usuario.getDinero());
+
+    }
+    public void onButtonPcrClick(View view) {
+        usuario.objetosList.add(pcr);
+        coste = usuario.getDinero();
+        coste2 = pcr.getCoste();
+        coste = coste-coste2;
+        usuario.setDinero(coste);
+        dinero.setText("Dinero = " + usuario.getDinero());
+
+    }
+    public void onButtonBasuraClick(View view) {
+        usuario.objetosList.add(bolsabasura);
+        coste = usuario.getDinero();
+        coste2 = bolsabasura.getCoste();
+        coste = coste-coste2;
+        usuario.setDinero(coste);
+        dinero.setText("Dinero = " + usuario.getDinero());
+
+    }
+    public void onButtonMascarillaClick(View view) {
+        usuario.objetosList.add(mascarilla);
+        coste = usuario.getDinero();
+        coste2 = mascarilla.getCoste();
+        coste = coste-coste2;
+        usuario.setDinero(coste);
+        dinero.setText("Dinero = " + usuario.getDinero());
+
     }
 
     private void NotifyUser(String MSG) {

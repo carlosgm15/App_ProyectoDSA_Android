@@ -1,6 +1,8 @@
 package Models;
 
 public class Objetos {
+    String id;
+    String userId;
     String nombre;
     int coste;
     int puntoSaludRecuperados;
@@ -11,11 +13,29 @@ public class Objetos {
     }
 
 
-    public Objetos(String nombre, int coste) {
+    public Objetos(String nombre, int coste, String id, String userId, int puntoSaludRecuperados, int puntosDefensAdd) {
         this.nombre = nombre;
         this.coste = coste;
-        this.puntoSaludRecuperados = 0;
-        this.puntosDefensAdd = 0;
+        this.userId = userId;
+        this.id= id;
+        this.puntoSaludRecuperados = puntoSaludRecuperados;
+        this.puntosDefensAdd = puntosDefensAdd;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getNombre() {
@@ -50,11 +70,12 @@ public class Objetos {
         this.puntosDefensAdd = puntosDefensAdd;
     }
 
-
     @Override
     public String toString() {
         return "Objetos{" +
-                "nombre='" + nombre + '\'' +
+                "id='" + id + '\'' +
+                ", userId='" + userId + '\'' +
+                ", nombre='" + nombre + '\'' +
                 ", coste=" + coste +
                 ", puntoSaludRecuperados=" + puntoSaludRecuperados +
                 ", puntosDefensAdd=" + puntosDefensAdd +

@@ -24,8 +24,10 @@ public interface UserService {
     Call<List<Objetos>> getobjetos();
 
 
-    @POST("objetos/addObjeto")
-    Call<Objetos> addObjeto(@Body Objetos obj);
+    @POST("Objetos/addobjeto")
+    Call<Objetos> addobjeto(@Body Objetos obj);
+
+
     @GET("objetos/{objectName}")
     Call<Objetos> getobjeto(@Body Objetos obj);
     @GET("objetos/{objectName}/{nameUser}")

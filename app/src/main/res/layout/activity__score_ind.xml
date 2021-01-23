@@ -10,74 +10,68 @@
         android:id="@+id/PuntosDefensa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="164dp"
-        android:layout_marginEnd="317dp"
         android:layout_marginBottom="150dp"
         android:text="Puntos defensa:"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/PuntosSalud"
+        app:layout_constraintVertical_bias="0.054" />
 
     <TextView
         android:id="@+id/PuntosSalud"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="164dp"
-        android:layout_marginEnd="317dp"
+        android:layout_height="24dp"
         android:layout_marginBottom="250dp"
         android:text="Puntos salud:"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.062"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/Dinero"
+        app:layout_constraintVertical_bias="0.084" />
 
     <TextView
         android:id="@+id/Dinero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="164dp"
-        android:layout_marginEnd="317dp"
         android:layout_marginBottom="350dp"
         android:text="Dinero:"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.051"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/Id"
+        app:layout_constraintVertical_bias="0.079" />
 
     <TextView
         android:id="@+id/Id"
-        android:layout_width="8dp"
-        android:layout_height="15dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="164dp"
-        android:layout_marginEnd="317dp"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
         android:layout_marginBottom="450dp"
         android:text="Id:"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/nombreUser"
+        app:layout_constraintVertical_bias="0.145" />
 
     <TextView
         android:id="@+id/nombreUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="164dp"
-        android:layout_marginEnd="317dp"
-        android:layout_marginBottom="550dp"
         android:text="nombre:"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.053"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.139" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,10 +23,10 @@
             android:name="activities_dash.Activity_ScoreInd"
             android:theme="@style/ThemeAjustes" />
         <activity
-            android:name="activities_dash.Activity_Idioma"
+            android:name="activities_dash.Activity_ChangePass"
             android:theme="@style/ThemeIdioma" />
         <activity
-            android:name="activities_dash.Activity_Sonido"
+            android:name="activities_dash.Activity_delete"
             android:theme="@style/ThemeSonido" />
         <activity
             android:name="activities_dash.Activity_Score"

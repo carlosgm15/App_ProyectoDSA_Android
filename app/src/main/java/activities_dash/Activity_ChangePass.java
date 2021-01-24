@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import edu.upc.dsa.app_proyecto.R;
 
-public class Activity_Sonido extends AppCompatActivity {
+public class Activity_ChangePass extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity__sonido);
+        setContentView(R.layout.activity__changepass);
     }
 }

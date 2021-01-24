@@ -3,7 +3,9 @@ package edu.upc.dsa.app_proyecto;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -26,7 +28,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnDash;
     //crear retrofit
     Retrofit retrofit;
     //para la interfaz
@@ -44,23 +45,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        CargarPre();
         loginbar = findViewById(R.id.loginBar);
-        btnDash = (Button) findViewById(R.id.btnDash);;
-        loginbar.setVisibility(View.INVISIBLE);
-        btnDash.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loginbar.setVisibility(View.VISIBLE);
-                Espera(2000);
-                Intent intent = new Intent(MainActivity.this, Dashboard.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                intent.putExtra("name", nameUser);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-
         editTextName = this.findViewById(R.id.usernameLogin);
         editTextPassword = this.findViewById(R.id.passwodLogin);
 
@@ -125,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
                             id= usuario.getId();
                             NotifyUser("objetos" + objetosList);
                             Log.d("MYAPP", "La lista de objetos es" + objetosList);
+                            EscribirPre();
                             Intent intent = new Intent(MainActivity.this, Dashboard.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             intent.putExtra("name", nameUser);
@@ -170,6 +157,22 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
+    }
+    private void CargarPre () {
+        SharedPreferences sharedPref = getSharedPreferences("credenciales", MODE_PRIVATE);
+        nameUser = sharedPref.getString("nameUser","username");
+        passwordUser = sharedPref.getString("pass","password");
+        //editTextName.setText(nameUser);
+        //editTextPassword.setText(passwordUser);
+
+    }
+    private void EscribirPre() {
+        SharedPreferences sharedPref = getSharedPreferences("credenciales", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString( "nameUser", nameUser);
+        editor.putString("pass", passwordUser);
+        editor.apply();
+
     }
 
     /*private void SaveLoginSharedPreference(String nameUser, String passwordUser) {

@@ -2,7 +2,6 @@ package edu.upc.dsa.app_proyecto;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,28 +14,22 @@ public class Splash extends AppCompatActivity {
     String username = null;
     String pass = null;
     ProgressBar splashbar;
-   /* public void showProgress (boolean visible){
-        if(visible)
-            this.splashbar.setVisibility(View.VISIBLE);
-        else
-            this.splashbar.setVisibility(View.GONE);
-    }*/
-    private String ReadSharedPreference(String key){
-        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-        return sharedPref.getString(key,"");
-    }
 
+   /* private void ReadSharedPreference() {
+        SharedPreferences sharedPref = getSharedPreferences("credenciales", MODE_PRIVATE);
+        String username = sharedPref.getString("nameUser", "");
+        String pass = sharedPref.getString("pass", "");
+    }
+    */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         splashbar =findViewById(R.id.progressBar);
         splashbar.setVisibility(View.VISIBLE);
-        this.username = ReadSharedPreference("nameUser");
-        this.pass = ReadSharedPreference("passwordUser");
+       // ReadSharedPreference();
 
         final Handler h = new Handler();
-        if(username==""||pass=="") {
             h.postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -48,7 +41,7 @@ public class Splash extends AppCompatActivity {
                 }
             }, 5000);
         }
-        else {
+        /*else {
             h.postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -61,5 +54,5 @@ public class Splash extends AppCompatActivity {
             }, 5000);
 
         }
-    }
+    }*/
 }

@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import edu.upc.dsa.app_proyecto.R;
 
-public class Activity_Idioma extends AppCompatActivity {
+public class Activity_delete extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity__idioma);
+        setContentView(R.layout.activity__delete);
     }
 }

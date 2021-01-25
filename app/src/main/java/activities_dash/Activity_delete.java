@@ -51,10 +51,6 @@ public class Activity_delete extends AppCompatActivity {
                 .client(client)
                 .build();
         userService = retrofit.create(UserService.class);
-        User usuariotmp2 = new User();
-        //
-        usuariotmp2.setUsername(name);
-        usuariotmp2.setId(id);
         Call<User> usersCall = userService.gettuser(id);
         // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
         usersCall.enqueue(new Callback<User>() {
@@ -84,11 +80,11 @@ public class Activity_delete extends AppCompatActivity {
     public void DeleteClick(View view) {
         try {
 
-            Call<User> usersCall2 = userService.deletePlayer(usuario);
+            Call<Void> usersCall2 = userService.deleteuser(usuario);
             // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
-            usersCall2.enqueue(new Callback<User>() {
+            usersCall2.enqueue(new Callback<Void>() {
                 @Override
-                public void onResponse(Call<User> call, Response<User> response) {
+                public void onResponse(Call<Void> call, Response<Void> response) {
                     Log.i("marc", "" + response.code());
                     if (response.code() == 201) {
                         Log.i("marc", "todo bien");
@@ -115,7 +111,7 @@ public class Activity_delete extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<User> call, Throwable t) {
+                public void onFailure(Call<Void> call, Throwable t) {
 
                 }
             });

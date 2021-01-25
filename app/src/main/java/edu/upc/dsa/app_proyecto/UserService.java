@@ -23,8 +23,8 @@ public interface UserService {
     @GET("usuario/gettuser/{id}")
     Call<User> gettuser(@Path("id") String id);
 
-    @PUT("usuario/deletePlayer")
-    Call<User> deletePlayer(@Body User u);
+    @PUT("usuario/deleteuser/")
+    Call<Void> deleteuser(@Body User u);
 
     @PUT("usuario/updatepassword")
     Call<User> updatepassword(@Body User u);

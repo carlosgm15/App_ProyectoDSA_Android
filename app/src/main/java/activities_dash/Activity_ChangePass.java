@@ -62,6 +62,7 @@ public class Activity_ChangePass extends AppCompatActivity {
         usuariotmp2.setUsername(name);
         usuariotmp2.setId(id);
         usuariotmp2.setPassword(pass);
+        usuariotmp2.setDinero(100);
         try {
             Call<User> usersCall = userService.updatepassword(usuariotmp2);
             // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
@@ -71,7 +72,7 @@ public class Activity_ChangePass extends AppCompatActivity {
                 public void onResponse(Call<User> call, Response<User> response) {
                     Log.i("marc", "" + response.code());
                     if (response.code() == 201) {
-                        NotifyUser("Successful");
+                        NotifyUser("Contraseña cambiada");
                         Activity_ChangePass.this.usuario = response.body();
 
                     }

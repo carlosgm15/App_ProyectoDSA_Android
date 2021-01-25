@@ -62,40 +62,12 @@ public class Activity_Tienda extends AppCompatActivity {
                 .client(client)
                 .build();
         userService = retrofit.create(UserService.class);
-        User usuariotmp2 = new User();
+        User Usuario = new User();
         //
-        usuariotmp2.setUsername(name);
-        usuariotmp2.setId(id);
+        Usuario.setUsername(name);
+        Usuario.setId(id);
         try {
-            Call<User> usersCall = userService.gettuser(id);
-            // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
-            usersCall.enqueue(new Callback<User>() {
-
-                @Override
-                public void onResponse(Call<User> call, Response<User> response) {
-                    Log.i("marc", "" + response.code());
-                    usuario=response.body();
-                    if (response.code() == 201) {
-                        NotifyUser("Successful");
-                        Activity_Tienda.this.usuario = response.body();
-                        lista = usuario.objetosList;
-                        Dinero = usuario.getDinero();
-                        dinero.setText("Dinero = " + Dinero);
-
-                    }
-
-                    if (response.code() == 404) {
-                        NotifyUser("Error ocurrido");
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<User> call, Throwable t) {
-                    Log.e("marc", "on failure", t);
-                    NotifyUser("Error Server");
-                }
-
-            });
+           GetUser(id);
             Call<List<Objetos>> objetosCall = userService.getobjetos();
             // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
             objetosCall.enqueue(new Callback <List<Objetos>>() {
@@ -126,37 +98,6 @@ public class Activity_Tienda extends AppCompatActivity {
         regeneron.setUserId(usuario.getId());
 
         try {
-            Call<User> UserCall3 = userService.updateuser(usuario);
-            // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
-            UserCall3.enqueue(new Callback<User>() {
-
-                @Override
-                public void onResponse(Call<User> call, Response<User> response) {
-                    Log.i("marc2", "" + response.code());
-                    usuario = response.body();
-                    if (response.code() == 201) {
-                        Log.i("marc2", "todo bien3");
-                        NotifyUser("Succesful");
-                        dinero.setText("Dinero = " + usuario.getDinero());
-
-                    }
-
-                    if (response.code() == 400) {
-                        NotifyUser("Bad request");
-                        dinero.setText("Dinero = " + usuario.getDinero());
-                    }
-                    if (response.code() == 404) {
-                        NotifyUser("Not found");
-                        dinero.setText("Dinero = " + usuario.getDinero());
-                    }
-
-                }
-
-                @Override
-                public void onFailure(Call<User> call, Throwable t) {
-
-                }
-            });
             Call<Void> objetosCall2 = userService.addobjeto(regeneron);
             // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
             objetosCall2.enqueue(new Callback<Void>() {
@@ -191,35 +132,9 @@ public class Activity_Tienda extends AppCompatActivity {
 
                 }
             });
-            Call<User> usersCall = userService.gettuser(id);
-            // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
-            usersCall.enqueue(new Callback<User>() {
-
-                @Override
-                public void onResponse(Call<User> call, Response<User> response) {
-                    Log.i("marc", "" + response.code());
-                    usuario = response.body();
-                    if (response.code() == 201) {
-                        NotifyUser("Successful");
-                        Activity_Tienda.this.usuario = response.body();
-                        lista = usuario.objetosList;
-                        Dinero = usuario.getDinero();
-                        dinero.setText("Dinero = " + Dinero);
-
-                    }
-
-                    if (response.code() == 404) {
-                        NotifyUser("Error ocurrido");
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<User> call, Throwable t) {
-                    Log.e("marc", "on failure", t);
-                    NotifyUser("Error Server");
-                }
-
-            });
+            usuario.setDinero(usuario.getDinero()-regeneron.getCoste());
+            UpdateUser(usuario);
+            GetUser(usuario.getId());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -228,37 +143,7 @@ public class Activity_Tienda extends AppCompatActivity {
     public void onButtonPocionClick(View view) {
         pocion.setUserId(usuario.getId());
         try {
-            Call<User> UserCall3 = userService.updateuser(usuario);
-            // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
-            UserCall3.enqueue(new Callback<User>() {
 
-                @Override
-                public void onResponse(Call<User> call, Response<User> response) {
-                    Log.i("marc2", "" + response.code());
-                    usuario = response.body();
-                    if (response.code() == 201) {
-                        Log.i("marc2", "todo bien3");
-                        NotifyUser("Succesful");
-                        dinero.setText("Dinero = " + usuario.getDinero());
-
-                    }
-
-                    if (response.code() == 400) {
-                        NotifyUser("Bad request");
-                        dinero.setText("Dinero = " + usuario.getDinero());
-                    }
-                    if (response.code() == 404) {
-                        NotifyUser("Not found");
-                        dinero.setText("Dinero = " + usuario.getDinero());
-                    }
-
-                }
-
-                @Override
-                public void onFailure(Call<User> call, Throwable t) {
-
-                }
-            });
             Call<Void> objetosCall2 = userService.addobjeto(pocion);
             // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
             objetosCall2.enqueue(new Callback<Void>() {
@@ -293,35 +178,10 @@ public class Activity_Tienda extends AppCompatActivity {
 
                 }
             });
-            Call<User> usersCall = userService.gettuser(id);
-            // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
-            usersCall.enqueue(new Callback<User>() {
 
-                @Override
-                public void onResponse(Call<User> call, Response<User> response) {
-                    Log.i("marc", "" + response.code());
-                    usuario = response.body();
-                    if (response.code() == 201) {
-                        NotifyUser("Successful");
-                        Activity_Tienda.this.usuario = response.body();
-                        lista = usuario.objetosList;
-                        Dinero = usuario.getDinero();
-                        dinero.setText("Dinero = " + Dinero);
-
-                    }
-
-                    if (response.code() == 404) {
-                        NotifyUser("Error ocurrido");
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<User> call, Throwable t) {
-                    Log.e("marc", "on failure", t);
-                    NotifyUser("Error Server");
-                }
-
-            });
+            usuario.setDinero(usuario.getDinero()-pocion.getCoste());
+            UpdateUser(usuario);
+            GetUser(usuario.getId());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -332,37 +192,6 @@ public class Activity_Tienda extends AppCompatActivity {
     public void onButtonPcrClick(View view) {
         pcr.setUserId(usuario.getId());
         try {
-            Call<User> UserCall3 = userService.updateuser(usuario);
-            // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
-            UserCall3.enqueue(new Callback<User>() {
-
-                @Override
-                public void onResponse(Call<User> call, Response<User> response) {
-                    Log.i("marc2", "" + response.code());
-                    usuario = response.body();
-                    if (response.code() == 201) {
-                        Log.i("marc2", "todo bien3");
-                        NotifyUser("Succesful");
-                        dinero.setText("Dinero = " + usuario.getDinero());
-
-                    }
-
-                    if (response.code() == 400) {
-                        NotifyUser("Bad request");
-                        dinero.setText("Dinero = " + usuario.getDinero());
-                    }
-                    if (response.code() == 404) {
-                        NotifyUser("Not found");
-                        dinero.setText("Dinero = " + usuario.getDinero());
-                    }
-
-                }
-
-                @Override
-                public void onFailure(Call<User> call, Throwable t) {
-
-                }
-            });
             Call<Void> objetosCall2 = userService.addobjeto(pcr);
             // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
             objetosCall2.enqueue(new Callback<Void>() {
@@ -397,35 +226,9 @@ public class Activity_Tienda extends AppCompatActivity {
 
                 }
             });
-            Call<User> usersCall = userService.gettuser(id);
-            // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
-            usersCall.enqueue(new Callback<User>() {
-
-                @Override
-                public void onResponse(Call<User> call, Response<User> response) {
-                    Log.i("marc", "" + response.code());
-                    usuario = response.body();
-                    if (response.code() == 201) {
-                        NotifyUser("Successful");
-                        Activity_Tienda.this.usuario = response.body();
-                        lista = usuario.objetosList;
-                        Dinero = usuario.getDinero();
-                        dinero.setText("Dinero = " + Dinero);
-
-                    }
-
-                    if (response.code() == 404) {
-                        NotifyUser("Error ocurrido");
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<User> call, Throwable t) {
-                    Log.e("marc", "on failure", t);
-                    NotifyUser("Error Server");
-                }
-
-            });
+            usuario.setDinero(usuario.getDinero()-pcr.getCoste());
+            UpdateUser(usuario);
+            GetUser(usuario.getId());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -434,37 +237,6 @@ public class Activity_Tienda extends AppCompatActivity {
     public void onButtonBasuraClick(View view) {
         bolsabasura.setUserId(usuario.getId());
         try {
-            Call<User> UserCall3 = userService.updateuser(usuario);
-            // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
-            UserCall3.enqueue(new Callback<User>() {
-
-                @Override
-                public void onResponse(Call<User> call, Response<User> response) {
-                    Log.i("marc2", "" + response.code());
-                    usuario = response.body();
-                    if (response.code() == 201) {
-                        Log.i("marc2", "todo bien3");
-                        NotifyUser("Succesful");
-                        dinero.setText("Dinero = " + usuario.getDinero());
-
-                    }
-
-                    if (response.code() == 400) {
-                        NotifyUser("Bad request");
-                        dinero.setText("Dinero = " + usuario.getDinero());
-                    }
-                    if (response.code() == 404) {
-                        NotifyUser("Not found");
-                        dinero.setText("Dinero = " + usuario.getDinero());
-                    }
-
-                }
-
-                @Override
-                public void onFailure(Call<User> call, Throwable t) {
-
-                }
-            });
             Call<Void> objetosCall2 = userService.addobjeto(bolsabasura);
             // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
             objetosCall2.enqueue(new Callback<Void>() {
@@ -499,36 +271,9 @@ public class Activity_Tienda extends AppCompatActivity {
 
                 }
             });
-            Call<User> usersCall = userService.gettuser(id);
-            // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
-            usersCall.enqueue(new Callback<User>() {
-
-                @Override
-                public void onResponse(Call<User> call, Response<User> response) {
-                    Log.i("marc", "" + response.code());
-                    usuario = response.body();
-                    if (response.code() == 201) {
-                        NotifyUser("Successful");
-                        Activity_Tienda.this.usuario = response.body();
-                        lista = usuario.objetosList;
-                        Dinero = usuario.getDinero();
-                        dinero.setText("Dinero = " + Dinero);
-
-                    }
-
-                    if (response.code() == 404) {
-                        NotifyUser("Error ocurrido");
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<User> call, Throwable t) {
-                    Log.e("marc", "on failure", t);
-                    NotifyUser("Error Server");
-                }
-
-            });
-
+            usuario.setDinero(usuario.getDinero()-bolsabasura.getCoste());
+            UpdateUser(usuario);
+            GetUser(usuario.getId());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -536,37 +281,7 @@ public class Activity_Tienda extends AppCompatActivity {
     public void onButtonMascarillaClick(View view) {
         mascarilla.setUserId(usuario.getId());
         try {
-            Call<User> UserCall3 = userService.updateuser(usuario);
-            // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
-            UserCall3.enqueue(new Callback<User>() {
 
-                @Override
-                public void onResponse(Call<User> call, Response<User> response) {
-                    Log.i("marc2", "" + response.code());
-                    usuario = response.body();
-                    if (response.code() == 201) {
-                        Log.i("marc2", "todo bien3");
-                        NotifyUser("Succesful");
-                        dinero.setText("Dinero = " + usuario.getDinero());
-
-                    }
-
-                    if (response.code() == 400) {
-                        NotifyUser("Bad request");
-                        dinero.setText("Dinero = " + usuario.getDinero());
-                    }
-                    if (response.code() == 404) {
-                        NotifyUser("Not found");
-                        dinero.setText("Dinero = " + usuario.getDinero());
-                    }
-
-                }
-
-                @Override
-                public void onFailure(Call<User> call, Throwable t) {
-
-                }
-            });
             Call<Void> objetosCall2 = userService.addobjeto(mascarilla);
             // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
             objetosCall2.enqueue(new Callback<Void>() {
@@ -601,35 +316,10 @@ public class Activity_Tienda extends AppCompatActivity {
 
                 }
             });
-            Call<User> usersCall = userService.gettuser(id);
-            // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
-            usersCall.enqueue(new Callback<User>() {
 
-                @Override
-                public void onResponse(Call<User> call, Response<User> response) {
-                    Log.i("marc", "" + response.code());
-                    usuario = response.body();
-                    if (response.code() == 201) {
-                        NotifyUser("Successful");
-                        Activity_Tienda.this.usuario = response.body();
-                        lista = usuario.objetosList;
-                        Dinero = usuario.getDinero();
-                        dinero.setText("Dinero = " + Dinero);
-
-                    }
-
-                    if (response.code() == 404) {
-                        NotifyUser("Error ocurrido");
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<User> call, Throwable t) {
-                    Log.e("marc", "on failure", t);
-                    NotifyUser("Error Server");
-                }
-
-            });
+            usuario.setDinero(usuario.getDinero()-mascarilla.getCoste());
+            UpdateUser(usuario);
+            GetUser(usuario.getId());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -640,7 +330,70 @@ public class Activity_Tienda extends AppCompatActivity {
 
         Toast toast = Toast.makeText(Activity_Tienda.this, MSG, Toast.LENGTH_SHORT);
     }
-    public void GetObjetos(){
+    public void GetUser(String id){
+        Call<User> usersCall = userService.gettuser(id);
+        // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
+        usersCall.enqueue(new Callback<User>() {
+
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                Log.i("marc", "" + response.code());
+                usuario = response.body();
+                if (response.code() == 201) {
+                    NotifyUser("Successful");
+                    Activity_Tienda.this.usuario = response.body();
+                    lista = usuario.objetosList;
+                    Dinero = usuario.getDinero();
+                    dinero.setText("Dinero = " + Dinero);
+
+                }
+
+                if (response.code() == 404) {
+                    NotifyUser("Error ocurrido");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Log.e("marc", "on failure", t);
+                NotifyUser("Error Server");
+            }
+
+        });
+
+    }
+    public void UpdateUser(User User){
+        Call<User> UserCall3 = userService.updateuser(User);
+        // Android Doesn't allow synchronous execution of Http Request and so we must put it in queue
+        UserCall3.enqueue(new Callback<User>() {
+
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                Log.i("marc2", "" + response.code());
+                usuario = response.body();
+                if (response.code() == 201) {
+                    Log.i("marc2", "todo bien3");
+                    NotifyUser("Succesful");
+                    dinero.setText("Dinero = " + usuario.getDinero());
+
+                }
+
+                if (response.code() == 400) {
+                    NotifyUser("Bad request");
+                    dinero.setText("Dinero = " + usuario.getDinero());
+                }
+                if (response.code() == 404) {
+                    NotifyUser("Not found");
+                    dinero.setText("Dinero = " + usuario.getDinero());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+
+            }
+        });
 
     }
 }

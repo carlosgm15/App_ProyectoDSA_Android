@@ -117,6 +117,9 @@ public class MainActivity extends AppCompatActivity {
                             intent.putExtra("name", nameUser);
                             intent.putExtra("id", id);
                             startActivity(intent);
+                            if(response.code() == 404){
+                                NotifyUser("Contraseña incorrecta");
+                            }
                             //finish();
                         }
                         loginbar.setVisibility(View.VISIBLE);

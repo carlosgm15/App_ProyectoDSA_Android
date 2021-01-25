@@ -26,6 +26,9 @@ public interface UserService {
     @PUT("usuario/deleteuser/")
     Call<Void> deleteuser(@Body User u);
 
+    @PUT("usuario/finalpartida/")
+    Call<Void> finalpartida(@Body User u);
+
     @PUT("usuario/updatepassword")
     Call<User> updatepassword(@Body User u);
 
@@ -34,6 +37,7 @@ public interface UserService {
 
     @GET("usuario/getranking/")
     Call<List<User>> getranking();
+
 
 
 

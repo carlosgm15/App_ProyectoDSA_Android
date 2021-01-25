@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
+import java.util.Random;
 
 import Models.Objetos;
 import Models.User;
@@ -39,16 +40,16 @@ public class MainActivity extends AppCompatActivity {
     List<Objetos> objetosList;
 
     public TextView editTextName, editTextPassword ;
-    public String nameUser,passwordUser, id;
+    public String nameUser,passwordUser, id, passUser2, nameUser2;
     private static int REGISTRAR = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        CargarPre();
         loginbar = findViewById(R.id.loginBar);
         editTextName = this.findViewById(R.id.usernameLogin);
         editTextPassword = this.findViewById(R.id.passwodLogin);
+        CargarPre();
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -151,11 +152,15 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
+                Bundle bundle2 = data.getExtras();
+                nameUser2 = bundle2.getString("username2");
+                passUser2 = bundle2.getString("password2");
                 loginbar.setVisibility(View.VISIBLE);
                 Espera(4000);
                 User usuariotmp = new User();
-                usuariotmp.setUsername(nameUser);
-                usuariotmp.setPassword(passwordUser);
+                usuariotmp.setUsername(nameUser2);
+                usuariotmp.setPassword(passUser2);
+                usuariotmp.setDinero(100);
                 postAddUser(usuariotmp);
             }
 
@@ -165,8 +170,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences("credenciales", MODE_PRIVATE);
         nameUser = sharedPref.getString("nameUser","username");
         passwordUser = sharedPref.getString("pass","password");
-        //editTextName.setText(nameUser);
-        //editTextPassword.setText(passwordUser);
+        editTextName.setText(nameUser);
+        editTextPassword.setText(passwordUser);
 
     }
     private void EscribirPre() {
@@ -197,9 +202,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void postAddUser (User usuariotmp){
         try {
-            Call<User> usersCall = userService.addUser(usuariotmp);
+            Call<User> usersCall2 = userService.adduser(usuariotmp);
             /* Android Doesn't allow synchronous execution of Http Request and so we must put it in queue*/
-            usersCall.enqueue(new Callback<User>() {
+            usersCall2.enqueue(new Callback<User>() {
 
                 @Override
                 public void onResponse(Call<User> call, Response<User> response) {

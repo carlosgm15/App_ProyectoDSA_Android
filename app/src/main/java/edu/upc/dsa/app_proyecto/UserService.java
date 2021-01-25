@@ -15,7 +15,7 @@ import retrofit2.http.Path;
 public interface UserService {
 
     @POST("usuario/adduser/")
-    Call<User> addUser(@Body User u);
+    Call<User> adduser(@Body User u);
 
     @POST("usuario/logginuser/")
     Call<User> logginUser(@Body User u);

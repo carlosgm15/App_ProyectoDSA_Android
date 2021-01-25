@@ -28,6 +28,8 @@ private String name, id;
             public void onClick(View v) {
                 Intent intent = new Intent(Activity_Ajustes.this, Activity_ChangePass.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                intent.putExtra("name", name);
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });
@@ -36,6 +38,8 @@ private String name, id;
             public void onClick(View v) {
                 Intent intent = new Intent(Activity_Ajustes.this, Activity_delete.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                intent.putExtra("name", name);
+                intent.putExtra("id", id);
                 startActivity(intent);
             }
         });

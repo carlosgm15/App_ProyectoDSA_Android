@@ -108,6 +108,7 @@ public class Activity_Tienda extends AppCompatActivity {
                     if (response.code() == 201) {
                         Log.i("marc2", "todo bien");
                         NotifyUser("Succesful");
+                        usuario.setDinero(usuario.getDinero()-regeneron.getCoste());
                     }
 
                     if (response.code() == 400) {
@@ -132,7 +133,7 @@ public class Activity_Tienda extends AppCompatActivity {
 
                 }
             });
-            usuario.setDinero(usuario.getDinero()-regeneron.getCoste());
+
             UpdateUser(usuario);
             GetUser(usuario.getId());
 
@@ -154,6 +155,7 @@ public class Activity_Tienda extends AppCompatActivity {
                     if (response.code() == 201) {
                         Log.i("marc2", "todo bien");
                         NotifyUser("Succesful");
+                        usuario.setDinero(usuario.getDinero()-pocion.getCoste());
                     }
 
                     if (response.code() == 400) {
@@ -179,7 +181,7 @@ public class Activity_Tienda extends AppCompatActivity {
                 }
             });
 
-            usuario.setDinero(usuario.getDinero()-pocion.getCoste());
+
             UpdateUser(usuario);
             GetUser(usuario.getId());
 
@@ -202,6 +204,7 @@ public class Activity_Tienda extends AppCompatActivity {
                     if (response.code() == 201) {
                         Log.i("marc2", "todo bien");
                         NotifyUser("Succesful");
+                        usuario.setDinero(usuario.getDinero()-pcr.getCoste());
                     }
 
                     if (response.code() == 400) {
@@ -226,7 +229,7 @@ public class Activity_Tienda extends AppCompatActivity {
 
                 }
             });
-            usuario.setDinero(usuario.getDinero()-pcr.getCoste());
+
             UpdateUser(usuario);
             GetUser(usuario.getId());
 
@@ -247,6 +250,7 @@ public class Activity_Tienda extends AppCompatActivity {
                     if (response.code() == 201) {
                         Log.i("marc2", "todo bien");
                         NotifyUser("Succesful");
+                        usuario.setDinero(usuario.getDinero()-bolsabasura.getCoste());
                     }
 
                     if (response.code() == 400) {
@@ -271,7 +275,7 @@ public class Activity_Tienda extends AppCompatActivity {
 
                 }
             });
-            usuario.setDinero(usuario.getDinero()-bolsabasura.getCoste());
+
             UpdateUser(usuario);
             GetUser(usuario.getId());
         } catch (Exception e) {
@@ -292,6 +296,7 @@ public class Activity_Tienda extends AppCompatActivity {
                     if (response.code() == 201) {
                         Log.i("marc2", "todo bien");
                         NotifyUser("Succesful");
+                        usuario.setDinero(usuario.getDinero()-mascarilla.getCoste());
                     }
 
                     if (response.code() == 400) {
@@ -317,7 +322,7 @@ public class Activity_Tienda extends AppCompatActivity {
                 }
             });
 
-            usuario.setDinero(usuario.getDinero()-mascarilla.getCoste());
+
             UpdateUser(usuario);
             GetUser(usuario.getId());
 

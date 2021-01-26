@@ -37,21 +37,9 @@ public interface UserService {
 
     @GET("usuario/getranking/")
     Call<List<User>> getranking();
-
-
-
-
     @GET("Objetos/getobjetos")
     Call<List<Objetos>> getobjetos();
-
-
     @POST("Objetos/addobjeto")
     Call<Void> addobjeto(@Body Objetos obj);
-
-
-    @GET("objetos/{objectName}")
-    Call<Objetos> getobjeto(@Body Objetos obj);
-    @GET("objetos/{objectName}/{nameUser}")
-    Call<Objetos> getobjetoUser(@Body Objetos obj);
 
 }

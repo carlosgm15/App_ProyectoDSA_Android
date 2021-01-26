@@ -1,2 +1,4 @@
+include ':unityLibrarydebug'
+include ':launcherdebug'
 include ':app'
 rootProject.name = "App_Proyecto"

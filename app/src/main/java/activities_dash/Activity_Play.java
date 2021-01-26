@@ -8,6 +8,8 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.unity3d.player.UnityPlayerActivity;
+
 import java.util.List;
 
 import Models.Objetos;
@@ -92,13 +94,9 @@ public class Activity_Play extends AppCompatActivity {
                         msg= msg+ usuario.getUsername();
                         msg = msg +" "+bolsabasura+" "+mascarilla+ " "+pocion+
                                 " "+regeneron+" "+pcr;
-                        texto.setText(msg);
+                        //texto.setText(msg);
 
-                        /*Intent intent = new Intent(this, UnityPlayerActivity.class);
-                        intent.putExtra("arguments", );
-                        startActivity(intent);*/
-
-
+                        abrirJuego(msg);
                     }
 
                     if (response.code() == 404) {
@@ -121,4 +119,10 @@ public class Activity_Play extends AppCompatActivity {
 
         Toast toast = Toast.makeText(Activity_Play.this, MSG, Toast.LENGTH_SHORT);
     }
+
+    public void abrirJuego(String msg){
+        Intent intent = new Intent(this, UnityPlayerActivity.class);
+        intent.putExtra("arguments", msg);
+        startActivity(intent);
     }
+}
